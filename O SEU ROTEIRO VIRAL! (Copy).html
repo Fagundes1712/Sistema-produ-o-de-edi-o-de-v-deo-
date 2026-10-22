@@ -1,0 +1,1039 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>O SEU ROTEIRO VIRAL! (Copy)</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+/* Layout: uma coluna estreita, como um teleprompter. Briefing em 5 etapas com régua de timeline; roteiro final como linha do tempo de cenas com timecode. */
+:root{
+  --bg:#F1F2F6; --surface:#FFFFFF; --sunk:#E7E9F0; --ink:#13151C; --muted:#596074; --line:#D5D9E3;
+  --accent:#2A39E6; --accent-ink:#FFFFFF; --accent-soft:#E2E5FF; --rec:#D4352C; --ok:#1E7F47; --warn:#9A5A00;
+  --f-display:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
+  --f-body:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0D0F15; --surface:#161922; --sunk:#1E222D; --ink:#ECEEF4; --muted:#9BA2B4; --line:#2A2F3C;
+  --accent:#8590FF; --accent-ink:#0D0F15; --accent-soft:#232848; --rec:#FF5F55; --ok:#4FC985; --warn:#E3A84A; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0D0F15; --surface:#161922; --sunk:#1E222D; --ink:#ECEEF4; --muted:#9BA2B4; --line:#2A2F3C;
+  --accent:#8590FF; --accent-ink:#0D0F15; --accent-soft:#232848; --rec:#FF5F55; --ok:#4FC985; --warn:#E3A84A; color-scheme:dark}
+
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.5}
+*{box-sizing:border-box}
+.shell{max-width:720px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 56px;display:flex;flex-direction:column;gap:20px}
+button,input,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* Cabeçalho */
+.brand{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.wordmark{display:flex;align-items:center;gap:10px}
+.wordmark{flex-wrap:wrap}
+.wordmark h1{font-family:var(--f-display);font-weight:800;font-size:clamp(1.3rem,5.4vw,1.75rem);letter-spacing:-.01em;margin:0;line-height:1.05;text-wrap:balance}
+.hist{display:flex;flex-direction:column;gap:2px;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:6px 14px;margin-bottom:12px}
+.hist-item{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 0;border-top:1px solid var(--line);flex-wrap:wrap}
+.hist-item:first-child{border-top:0}
+.hist-item .client-info{flex:1}
+.rec{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-mono);font-size:.7rem;font-weight:700;letter-spacing:.12em;color:var(--rec);border:1.5px solid var(--rec);border-radius:4px;padding:3px 6px}
+.rec::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--rec);animation:blink 1.6s steps(2,start) infinite}
+@keyframes blink{to{visibility:hidden}}
+.tagline{color:var(--muted);font-size:.9rem;margin:6px 0 0}
+.tabs{display:flex;gap:4px;background:var(--sunk);padding:4px;border-radius:10px}
+.tab{flex:1;border:0;background:transparent;padding:9px 8px;border-radius:7px;font-weight:600;font-size:.9rem;color:var(--muted);cursor:pointer;white-space:nowrap}
+.tab[aria-selected="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.08)}
+
+/* Régua de etapas */
+.ruler{display:grid;grid-template-columns:repeat(5,1fr);gap:4px}
+.mark{border:0;background:none;padding:0;cursor:pointer;text-align:left;display:flex;flex-direction:column;gap:6px;min-width:0}
+.mark .bar{height:5px;border-radius:3px;background:var(--line)}
+.mark .lbl{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mark.done .bar{background:var(--accent);opacity:.45}
+.mark.now .bar{background:var(--accent)}
+.mark.now .lbl{color:var(--ink);font-weight:700}
+
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px 20px;display:flex;flex-direction:column;gap:22px}
+.step-head{display:flex;flex-direction:column;gap:4px}
+.eyebrow{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:700}
+h2{font-family:var(--f-display);font-weight:800;font-size:1.45rem;line-height:1.15;letter-spacing:-.015em;margin:0;text-wrap:balance}
+h3{font-family:var(--f-display);font-weight:600;font-size:1.08rem;margin:0;text-wrap:balance}
+.intro{color:var(--muted);margin:0;max-width:60ch}
+
+.field{display:flex;flex-direction:column;gap:8px;min-width:0}
+.field>label,.field .flabel{font-weight:600}
+.req{color:var(--rec);margin-left:3px}
+.hint{color:var(--muted);font-size:.85rem;margin-top:-4px}
+input[type=text],textarea{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:9px;padding:11px 12px;font-size:1rem}
+textarea{min-height:76px;resize:vertical}
+input[type=text]:focus,textarea:focus{border-color:var(--accent);outline:none;box-shadow:0 0 0 3px var(--accent-soft)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--line);background:var(--bg);border-radius:999px;padding:8px 14px;font-size:.92rem;cursor:pointer;line-height:1.25;text-align:left}
+.chip:hover{border-color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:600}
+.range-wrap{display:flex;flex-direction:column;gap:6px}
+input[type=range]{width:100%;accent-color:var(--accent)}
+.range-scale{display:flex;justify-content:space-between;font-size:.75rem;color:var(--muted)}
+.range-now{font-family:var(--f-mono);font-size:.85rem;color:var(--accent);font-weight:700}
+.err{color:var(--rec);font-size:.88rem;font-weight:600}
+
+.nav{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.btn{border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:11px 18px;font-weight:600;cursor:pointer}
+.btn:hover{border-color:var(--muted)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn.primary:hover{filter:brightness(1.07)}
+.btn.ghost{background:transparent;border-color:transparent;color:var(--accent);padding-inline:6px}
+.btn:disabled{opacity:.5;cursor:default}
+.btn.big{padding:14px 22px;font-size:1.02rem}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+
+/* Pautas */
+.news{display:flex;flex-direction:column;gap:10px}
+.pick{display:flex;gap:12px;align-items:flex-start;border:1px solid var(--line);background:var(--bg);border-radius:11px;padding:14px;cursor:pointer;text-align:left;width:100%}
+.pick[aria-checked="true"]{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent-soft);background:var(--surface)}
+.radio{flex:none;width:18px;height:18px;border-radius:50%;border:2px solid var(--muted);margin-top:3px;display:grid;place-items:center}
+.pick[aria-checked="true"] .radio{border-color:var(--accent)}
+.pick[aria-checked="true"] .radio::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent)}
+.pick-body{display:flex;flex-direction:column;gap:4px;min-width:0}
+.pick-title{font-weight:700;line-height:1.3}
+.pick-meta{font-family:var(--f-mono);font-size:.7rem;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+.pick-sum{color:var(--muted);font-size:.9rem}
+.note{background:var(--accent-soft);border-radius:10px;padding:12px 14px;font-size:.9rem}
+.empty{border:1.5px dashed var(--line);border-radius:12px;padding:18px;color:var(--muted);font-size:.92rem}
+
+/* Roteiro */
+.script{display:flex;flex-direction:column;gap:22px}
+.script-top{display:flex;flex-direction:column;gap:10px}
+.script-title{font-family:var(--f-display);font-weight:800;font-size:1.6rem;line-height:1.12;letter-spacing:-.02em;margin:0;text-wrap:balance}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.05em;text-transform:uppercase;background:var(--sunk);border-radius:5px;padding:4px 7px;color:var(--muted)}
+.why{border-left:3px solid var(--accent);padding:2px 0 2px 14px;color:var(--ink)}
+.why b{display:block;font-family:var(--f-mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:2px}
+.timeline{display:flex;flex-direction:column}
+.scene{display:grid;grid-template-columns:76px 1fr;gap:14px;padding:16px 0;border-top:1px solid var(--line)}
+.scene:first-child{border-top:0;padding-top:4px}
+.tc{font-family:var(--f-mono);font-weight:700;font-size:.82rem;color:var(--rec);display:flex;flex-direction:column;gap:3px;font-variant-numeric:tabular-nums}
+.tc small{color:var(--muted);font-weight:500;font-size:.7rem;text-transform:uppercase;letter-spacing:.05em}
+.scene-body{display:flex;flex-direction:column;gap:8px;min-width:0}
+.fala{font-size:1.12rem;line-height:1.45;font-weight:500;margin:0}
+.fala::before{content:"“";color:var(--muted)} .fala::after{content:"”";color:var(--muted)}
+.dir{display:grid;grid-template-columns:auto 1fr;gap:3px 10px;font-size:.86rem;color:var(--muted)}
+.dir dt{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;padding-top:3px;color:var(--ink);opacity:.7}
+.dir dd{margin:0;min-width:0}
+.block{display:flex;flex-direction:column;gap:8px}
+.block h3 small{font-family:var(--f-mono);font-size:.68rem;color:var(--muted);font-weight:500;margin-left:6px;letter-spacing:.04em}
+.caption{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px 14px;white-space:pre-wrap;font-size:.95rem}
+ol.alts,ul.tips{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px}
+.progress{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+.pulse{display:flex;gap:6px}
+.pulse i{width:8px;height:22px;border-radius:2px;background:var(--accent);animation:wave 1s ease-in-out infinite}
+.pulse i:nth-child(2){animation-delay:.12s}.pulse i:nth-child(3){animation-delay:.24s}.pulse i:nth-child(4){animation-delay:.36s}.pulse i:nth-child(5){animation-delay:.48s}
+@keyframes wave{0%,100%{transform:scaleY(.35)}50%{transform:scaleY(1)}}
+.toast{font-size:.88rem;font-weight:600;color:var(--ok)}
+
+/* Pautas da semana + clientes */
+.niche{display:flex;flex-direction:column;gap:12px}
+.niche-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+.item{display:flex;flex-direction:column;gap:6px;padding:14px 0;border-top:1px solid var(--line)}
+.item:first-of-type{border-top:0}
+.item a{color:var(--accent);font-weight:600;font-size:.88rem;text-decoration:none}
+.item a:hover{text-decoration:underline}
+.facts{margin:0;padding-left:18px;font-size:.9rem;color:var(--muted)}
+.angle{font-size:.9rem}
+.angle b{color:var(--accent)}
+.client{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:14px 0;border-top:1px solid var(--line);flex-wrap:wrap}
+.client:first-child{border-top:0}
+.client-info{display:flex;flex-direction:column;gap:2px;min-width:0}
+.pending-list{display:flex;flex-wrap:wrap;gap:6px}
+.import{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:12px}
+.import textarea{background:var(--surface)}
+.send-box{white-space:pre-wrap;overflow-wrap:anywhere;font-size:.85rem;max-height:260px;overflow:auto}
+body.modo-cliente .shell{padding-block-end:160px}
+.done-mark{display:inline-flex;align-items:center;gap:8px;font-weight:700;color:var(--ok)}
+
+@media (max-width:480px){
+  .panel{padding:18px 15px}
+  .scene{grid-template-columns:1fr;gap:6px}
+  .tc{flex-direction:row;align-items:baseline;gap:8px}
+  h2{font-size:1.3rem}
+  .script-title{font-size:1.38rem}
+}
+@media (prefers-reduced-motion:reduce){.rec::before,.pulse i{animation:none}}
+</style>
+
+<div class="shell">
+  <header>
+    <div class="brand">
+      <div class="wordmark"><span class="rec" aria-hidden="true">REC</span><h1>O SEU ROTEIRO VIRAL!</h1></div>
+    </div>
+    <p class="tagline" id="tagline">Briefing do cliente + notícia da semana = roteiro pronto pra gravar.</p>
+  </header>
+
+  <nav class="tabs" id="tabs" role="tablist" aria-label="Seções">
+    <button class="tab" role="tab" id="tab-roteiro" data-view="roteiro" aria-selected="true">Novo roteiro</button>
+    <button class="tab" role="tab" id="tab-pautas" data-view="pautas" aria-selected="false">Pautas da semana</button>
+    <button class="tab" role="tab" id="tab-clientes" data-view="clientes" aria-selected="false">Clientes</button>
+  </nav>
+
+  <!-- ROTEIRO -->
+  <section id="view-roteiro" data-view-panel="roteiro">
+    <div id="wizard" style="display:flex;flex-direction:column;gap:16px">
+      <div class="ruler" id="ruler"></div>
+      <div id="steps"></div>
+    </div>
+    <div id="result" hidden></div>
+  </section>
+
+  <!-- PAUTAS -->
+  <section id="view-pautas" data-view-panel="pautas" hidden>
+    <div class="panel">
+      <div class="step-head">
+        <span class="eyebrow">Atualiza toda segunda de manhã</span>
+        <h2>Pautas da semana por nicho</h2>
+        <p class="intro">As notícias mais quentes de cada nicho cadastrado, já com o ângulo que pode viralizar. Nichos novos entram na próxima segunda.</p>
+      </div>
+      <div id="pautas-list"><div class="empty">Carregando pautas…</div></div>
+    </div>
+  </section>
+
+  <!-- CLIENTES -->
+  <section id="view-clientes" data-view-panel="clientes" hidden>
+    <div class="panel">
+      <div class="step-head">
+        <span class="eyebrow">Perfis salvos</span>
+        <h2>Clientes</h2>
+        <p class="intro">Abra um perfil salvo para gerar um novo roteiro com a pauta desta semana, sem responder tudo de novo.</p>
+      </div>
+      <div class="import">
+        <div class="field">
+          <label for="in-importar">Importar respostas de um cliente</label>
+          <span class="hint">Cole a mensagem que veio do link (<b>#cliente</b>) ou as respostas que o cliente mandou no WhatsApp, do jeito que vieram.</span>
+          <textarea id="in-importar" placeholder="Cole aqui a mensagem do cliente…" style="min-height:140px"></textarea>
+        </div>
+        <div class="field">
+          <label for="in-importar-nome">Nome do cliente</label>
+          <span class="hint">Só precisa se o nome não estiver na mensagem.</span>
+          <input type="text" id="in-importar-nome" placeholder="Ex.: Marina Couto">
+        </div>
+        <div class="row"><button type="button" class="btn primary" id="btn-importar">Importar e montar roteiro</button><span class="err" id="importar-msg" role="status"></span></div>
+      </div>
+      <div id="clientes-list"><div class="empty">Carregando clientes…</div></div>
+    </div>
+  </section>
+</div>
+
+<script type="application/json" id="noticias-semana">{"atualizadoEm": "2026-10-22T16:10:00-03:00", "nichos": {"empreendedorismo": {"nicho": "Empreendedorismo", "semana": "2026-10-19", "atualizadoEm": "2026-10-22T16:10:00-03:00", "itens": [{"angulo": "Uma startup que captou cerca de R$ 190 milhões vale R$ 1 bilhão para quem comprou: o que fez o iFood pagar 5 vezes mais e o que isso ensina sobre construir um negócio vendável.", "data": "2026-10-20", "fatos": ["Valor estimado em R$ 1 bilhão em dinheiro, segundo fontes — cerca de 5 vezes o que a Caju captou de investidores na história (aprox. R$ 190 milhões)", "Juntas, as operações somam 135 mil empresas clientes e mais de 3 milhões de usuários", "Mercado de benefícios movimenta R$ 150 bilhões por ano e cobre 22 milhões de trabalhadores pelo PAT", "O negócio ainda depende de aprovação do Cade e do Banco Central", "Em 2025 o iFood já tinha sido apontado como interessado na Alelo, num negócio que poderia passar de R$ 5 bilhões"], "fonte": "Startups", "id": "ifood-caju", "resumo": "O iFood fechou acordo para comprar a Caju, startup de benefícios corporativos, e passa a disputar de frente o mercado de vale-refeição dominado por Ticket, Pluxee, VR e Alelo.", "titulo": "iFood compra a Caju por cerca de R$ 1 bilhão", "url": "https://startups.com.br/negocios/ma/ifood-compra-caju-e-acirra-competicao-no-mercado-de-beneficios/"}, {"angulo": "O vídeo viral que quase quebrou a empresa dele: viralizar sem capacidade de entrega vira problema. Bom para falar de começar pequeno, reinvestir e escalar.", "data": "2026-10-14", "fatos": ["Faturamento bruto de US$ 808 mil em 2025, segundo documentos vistos pela CNBC", "Comprou a primeira impressora, de cerca de US$ 500, com as próprias economias em setembro de 2022", "O primeiro negócio, de enfeites para Crocs, vendeu cerca de US$ 250 mil em 2024", "Um post viral em agosto de 2025 gerou US$ 100 mil em um mês, e as 60 impressoras dele levariam 6 semanas para dar conta dos pedidos", "Hoje são 160 impressoras num galpão alugado por US$ 3.600 por mês; ele se paga entre US$ 500 e US$ 1.500 por mês e reinveste o resto", "Segundo a Shopify, as vendas de produtos impressos em 3D na plataforma subiram 112% em um ano"], "fonte": "CNBC Make It", "id": "cruisecup-3d", "resumo": "Mike Satterlee, de 19 anos, começou com uma impressora 3D no porão dos pais e hoje vende porta-latas impressos pela própria marca, a CruiseCup, no site e no TikTok Shop.", "titulo": "Jovem de 19 anos faturou US$ 808 mil com 160 impressoras 3D", "url": "https://makers101.com/cruisecup-3d-print-farm/"}, {"angulo": "A IA vai tirar emprego de advogado? Debate polêmico sobre profissões que a IA ameaça e onde estão as oportunidades para quem empreende.", "data": "2026-10-13", "fatos": ["A Enter é considerada a startup de IA jurídica mais valiosa da América Latina, avaliada em mais de US$ 1 bilhão", "Atende empresas como Bradesco e Mercado Livre", "Recebeu mais de US$ 100 milhões de fundos como Founders Fund e Sequoia", "Os agentes de IA fazem a primeira versão de cada etapa do processo antes de um advogado entrar", "Cobra por êxito: vende taxa de sucesso, não horas ou uso de IA"], "fonte": "CNN Brasil", "id": "enter-oab", "resumo": "A seccional paulista da OAB autorizou uma ação civil pública contra a Enter, acusando a startup de exercer a advocacia sem advogado. A empresa nega e diz que advogados seguem revisando e assinando tudo.", "titulo": "OAB-SP vai à Justiça contra a Enter, startup de IA jurídica avaliada em mais de US$ 1 bilhão", "url": "https://www.cnnbrasil.com.br/economia/money/inteligencia-artificial/startup-brasileira-de-ia-para-advogados-entra-mira-da-oab-sp/"}, {"angulo": "O Brasil está perdendo o posto de capital das startups da América Latina? Bom para opinião e para explicar como investidores escolhem onde colocar dinheiro.", "data": "2026-10-19", "fatos": ["México: US$ 1,52 bilhão; Brasil: US$ 1,08 bilhão (jan–set de 2026), cerca de 41% a mais", "O México concentrou dinheiro em poucas rodadas grandes; o Brasil teve mais negócios e lidera em vendas de empresas", "A Decade, fundada por um ex-CTO do Nubank, captou US$ 85 milhões, a maior rodada seed já registrada na América Latina", "Fundos internacionais como Sequoia e Founders Fund voltaram a investir no Brasil"], "fonte": "Startups / Crunchbase", "id": "mexico-brasil-vc", "resumo": "De janeiro a setembro, startups mexicanas captaram mais que as brasileiras, algo raro na história recente da América Latina.", "titulo": "México passa o Brasil em investimento em startups em 2026", "url": "https://startups.com.br/negocios/venture-capital/mexico-supera-brasil-em-aportes-para-startups-em-2026/"}, {"angulo": "Dá para ter uma franquia com R$ 20 mil? Mostrar opções curiosas (como a máquina que higieniza capacete) e o que perguntar antes de assinar.", "data": "2026-10-20", "fatos": ["Entrada gratuita e expectativa de mais de 100 mil visitantes em quatro dias", "Levantamento da PEGN mapeou nove redes com aporte a partir de R$ 20 mil", "Exemplos: PitCap (máquinas que higienizam capacetes) por R$ 23,5 mil, Verisure por R$ 25 mil, Doutor Sofá por R$ 32 mil e Kumon por R$ 50 mil", "A feira também ofereceu renegociação de dívidas para pequenos empresários"], "fonte": "SpaceMoney", "id": "feira-franquias-20mil", "resumo": "A feira do Sebrae-SP no São Paulo Expo (19 a 22 de outubro) reuniu redes de franquia com investimento inicial baixo e espera mais de 100 mil visitantes.", "titulo": "Feira do Empreendedor 2026 tem franquias a partir de R$ 20 mil", "url": "https://www.spacemoney.com.br/empreendedorismo/feira-do-empreendedor-2026-franquias-dividas"}]}}}</script>
+<script>
+(() => {
+"use strict";
+
+/* ---------- Configuração do briefing ---------- */
+const STEPS = [
+  { id:"perfil", nome:"Perfil", titulo:"Quem vai aparecer no vídeo",
+    intro:"Essas respostas definem o tom, a energia e o vocabulário do roteiro.",
+    campos:[
+      {id:"nome", tipo:"text", label:"Nome do cliente", labelCliente:"Seu nome", ph:"Ex.: Marina Couto", req:true},
+      {id:"arroba", tipo:"text", label:"@ principal", ph:"@marinacouto"},
+      {id:"perfilTipo", tipo:"chips", label:"Hoje você é", labelCliente:"Hoje você é",
+        op:["Empreendedor com negócio próprio","Profissional ou especialista","Criador de conteúdo (sem produto ou empresa)","Estudante ou começando agora"]},
+      {id:"energia", tipo:"range", label:"Energia na frente da câmera", escala:["Reservado","Calmo","Equilibrado","Animado","Explosivo"]},
+      {id:"estilo", tipo:"chips", multi:true, max:3, label:"Como você se comunica?", hint:"Escolha até 3.",
+        op:["Direto ao ponto","Didático","Engraçado","Provocador","Contador de histórias","Analítico","Inspirador","Irônico"]},
+      {id:"conforto", tipo:"chips", label:"Seu jeito de gravar",
+        op:["Travo fácil: prefiro frases curtas","Decoro o roteiro e gravo","Sigo o roteiro, mas improviso em cima","Improviso bem a partir de tópicos"]},
+      {id:"expressoes", tipo:"textarea", label:"Expressões, gírias ou bordões que você usa", ph:"Ex.: \"bora\", \"papo reto\", \"anota aí\""},
+      {id:"autoridade", tipo:"textarea", label:"O que te dá autoridade pra falar do assunto", ph:"Sua história, conquistas, números, experiência."},
+      {id:"naoFaz", tipo:"textarea", label:"O que você não topa fazer em vídeo", ph:"Ex.: dançar, falar palavrão, mostrar a família."}
+    ]},
+  { id:"objetivo", nome:"Objetivo", titulo:"O que o conteúdo precisa trazer",
+    intro:"O objetivo decide o gancho, a mensagem central e a chamada para ação.",
+    campos:[
+      {id:"objetivo", tipo:"chips", multi:true, label:"Objetivos com o conteúdo", req:true,
+        hint:"Pode marcar vários. O primeiro que você marcar conta como o principal.",
+        op:["Crescer seguidores","Viralizar e alcançar mais gente","Virar autoridade no nicho","Construir marca pessoal","Criar uma comunidade engajada",
+          "Fechar publis e parcerias com marcas","Monetizar o perfil","Vender produto ou serviço","Gerar contatos (leads)","Inspirar e ser referência"]},
+      {id:"oferta", tipo:"text", label:"O que você vende ou quer divulgar", hint:"Deixe em branco se ainda não vende nada.", ph:"Ex.: mentoria para pequenos negócios"},
+      {id:"publico", tipo:"textarea", label:"Quem você quer atingir", ph:"Idade, profissão, momento de vida. Ex.: jovens de 18 a 25 que querem abrir o primeiro negócio."},
+      {id:"dor", tipo:"textarea", label:"O que esse público quer ou teme", ph:"Ex.: medo de perder dinheiro, vontade de largar o emprego."},
+      {id:"cta", tipo:"chips", multi:true, label:"O que o espectador deve fazer no final", hint:"Pode marcar vários.",
+        op:["Seguir o perfil","Comentar uma palavra","Comentar a opinião","Salvar o vídeo","Mandar para um amigo","Clicar no link da bio","Chamar no direct"]},
+      {id:"referencias", tipo:"text", label:"Criadores que são referência pra você", ph:"Ex.: @fulano, @ciclano"},
+      {id:"meta", tipo:"text", label:"Meta em números", hint:"Opcional.", ph:"Ex.: 10 mil seguidores até março"}
+    ]},
+  { id:"formato", nome:"Formato", titulo:"Especificações do vídeo",
+    intro:"Duração, gancho e formato. O roteiro sai cronometrado em cima disso.",
+    campos:[
+      {id:"plataformas", tipo:"chips", multi:true, label:"Onde vai postar", req:true, op:["Instagram Reels","TikTok","YouTube Shorts","LinkedIn"]},
+      {id:"duracao", tipo:"chips", label:"Duração do vídeo", req:true, op:["15s","30s","45s","60s","90s"]},
+      {id:"hook", tipo:"chips", label:"Tipo de hook (gancho dos 3 primeiros segundos)",
+        op:["Deixe o sistema escolher","Dado chocante","Pergunta direta","Opinião polêmica","\"Você está fazendo errado\"","História em 1ª pessoa","Curiosidade / segredo","POV (cena)"]},
+      {id:"formatoVideo", tipo:"chips", label:"Formato", op:["Falando para a câmera","Green screen com a notícia","Voz em off com imagens","Reação (react)","Storytelling encenado"]},
+      {id:"ritmo", tipo:"chips", label:"Ritmo de cortes", op:["Rápido (corte a cada 1–2s)","Médio","Calmo"]},
+      {id:"recursos", tipo:"chips", multi:true, label:"O que você tem pra gravar", op:["Só o celular","Microfone de lapela","Ring light","Cenário montado","Imagens de apoio (b-roll)","Editor de vídeo"]}
+    ]},
+  { id:"nicho", nome:"Nicho", titulo:"Em qual nicho você quer jogar",
+    intro:"As pautas da semana são buscadas para este nicho toda segunda.",
+    campos:[
+      {id:"nicho", tipo:"chips", label:"Nicho", req:true,
+        op:["Empreendedorismo","Finanças pessoais","Marketing digital","Tecnologia e IA","Franquias","Startups","Varejo e e-commerce","Negócios de comida",
+          "Criação de conteúdo e redes sociais","Carreira e produtividade","Lifestyle e rotina","Outro"]},
+      {id:"nichoOutro", tipo:"text", label:"Qual nicho?", ph:"Ex.: Mercado imobiliário", showIf:f=>f.nicho==="Outro"},
+      {id:"angulo", tipo:"text", label:"Ângulo dentro do nicho", ph:"Ex.: empreendedorismo jovem, negócios com pouco dinheiro"},
+      {id:"evitar", tipo:"text", label:"Temas ou marcas a evitar", ph:"Ex.: concorrentes diretos, apostas"}
+    ]},
+  { id:"pauta", nome:"Pauta", titulo:"Escolha a notícia", intro:"", campos:[] }
+];
+const PAUTA_STEP = STEPS[4];
+// Campos de múltipla escolha. Perfis antigos guardavam alguns deles como texto único.
+const MULTI = STEPS.flatMap(s => s.campos).filter(c => c.multi).map(c => c.id);
+function normalizar(f){
+  for (const k of MULTI) { const v = f[k]; f[k] = v == null || v === "" ? [] : [].concat(v).map(String); }
+  return f;
+}
+const ENVIAR_STEP = { id:"enviar", nome:"Enviar", titulo:"Envie suas respostas",
+  intro:"Copie a mensagem abaixo e mande no WhatsApp para quem te passou este link. Seu roteiro é montado a partir dela, já com a notícia que você escolheu.", campos:[] };
+let modoCliente = false;
+let gestor = false;
+function setModoCliente(on){
+  modoCliente = on;
+  // Cliente: escolhe a notícia e depois envia as respostas. Dono: escolhe a notícia e gera o roteiro.
+  STEPS.length = 4; STEPS.push(PAUTA_STEP); if (on) STEPS.push(ENVIAR_STEP);
+  if (step > STEPS.length-1) step = STEPS.length-1;
+  $("#tabs").hidden = on;
+  document.body.classList.toggle("modo-cliente", on);
+  $("#tagline").textContent = on
+    ? "Responda as perguntas e escolha uma notícia quente da semana para o seu roteiro. Não precisa entrar no Claude: se aparecer um aviso de login, é só ignorar."
+    : "Briefing do cliente + notícia da semana = roteiro pronto pra gravar.";
+  if (on) showView("roteiro");
+}
+
+const EXEMPLO = {
+  nome:"Rafa Lima (exemplo)", arroba:"@rafalima", energia:4, estilo:["Direto ao ponto","Engraçado"],
+  conforto:"Improviso bem a partir de tópicos", expressoes:"\"bora\", \"papo reto\", \"anota aí\"",
+  autoridade:"Abriu o primeiro negócio aos 16 vendendo açaí na escola; hoje tem uma loja online.",
+  naoFaz:"Dançar, falar palavrão.", objetivo:["Virar autoridade no nicho","Crescer seguidores"], perfilTipo:"Empreendedor com negócio próprio", oferta:"",
+  publico:"Jovens de 16 a 24 anos que querem empreender.", dor:"Acham que precisam de muito dinheiro para começar.",
+  cta:["Seguir o perfil","Comentar a opinião"], referencias:"", meta:"", plataformas:["Instagram Reels","TikTok"], duracao:"45s",
+  hook:"Deixe o sistema escolher", formatoVideo:"Green screen com a notícia", ritmo:"Rápido (corte a cada 1–2s)",
+  recursos:["Só o celular","Microfone de lapela"], nicho:"Empreendedorismo",
+  nichoOutro:"", angulo:"Empreendedorismo jovem", evitar:""
+};
+
+/* ---------- Estado ---------- */
+const blank = () => ({energia:3, estilo:[], objetivo:[], cta:[], plataformas:[], recursos:[], pauta:"auto", pautaColada:""});
+let form = blank();
+let step = 0;
+let db = null, sample = null;
+let noticias = {};   // slug -> doc
+let nichos = {};     // slug -> doc
+let clientes = [];   // [{id, ...}]
+let dbReady = false;
+let lastRoteiro = null;
+let ctl = null;
+
+const $ = s => document.querySelector(s);
+const el = (tag, attrs={}, ...kids) => {
+  const n = document.createElement(tag);
+  for (const [k,v] of Object.entries(attrs)) {
+    if (v == null || v === false) continue;
+    if (k === "class") n.className = v;
+    else if (k === "text") n.textContent = v;
+    else if (k.startsWith("on")) n.addEventListener(k.slice(2), v);
+    else n.setAttribute(k, v === true ? "" : v);
+  }
+  for (const k of kids.flat()) if (k != null) n.append(k.nodeType ? k : document.createTextNode(String(k)));
+  return n;
+};
+const slugify = s => String(s||"").normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"");
+const nichoNome = () => form.nicho === "Outro" ? (form.nichoOutro||"").trim() : (form.nicho||"");
+const fmtData = iso => { if(!iso) return ""; const d = new Date(iso.length===10 ? iso+"T12:00:00" : iso); if (isNaN(d)) return iso;
+  return d.toLocaleDateString("pt-BR",{day:"2-digit",month:"short"}).replace(".",""); };
+
+/* ---------- Abas ---------- */
+const VIEWS = ["roteiro","pautas","clientes"];
+function showView(v){
+  if (!VIEWS.includes(v)) v = "roteiro";
+  document.querySelectorAll(".tab").forEach(t => t.setAttribute("aria-selected", String(t.dataset.view===v)));
+  document.querySelectorAll("[data-view-panel]").forEach(p => p.hidden = p.dataset.viewPanel !== v);
+  if (v === "pautas") renderPautas();
+  if (v === "clientes") renderClientes();
+}
+document.querySelectorAll(".tab").forEach(t => t.addEventListener("click", () => showView(t.dataset.view)));
+
+/* ---------- Briefing ---------- */
+function renderRuler(){
+  const r = $("#ruler"); r.textContent = "";
+  r.style.gridTemplateColumns = `repeat(${STEPS.length},1fr)`;
+  STEPS.forEach((s,i) => r.append(el("button",{class:"mark"+(i<step?" done":"")+(i===step?" now":""), type:"button",
+    "aria-label":`Etapa ${i+1}: ${s.nome}`, onclick:()=>goto(i)}, el("span",{class:"bar"}), el("span",{class:"lbl", text:`${i+1} ${s.nome}`}))));
+}
+
+function campoNode(c){
+  const wrap = el("div",{class:"field", id:"f-"+c.id});
+  if (c.showIf && !c.showIf(form)) wrap.hidden = true;
+  const txt = modoCliente && c.labelCliente ? c.labelCliente : c.label;
+  const lab = c.tipo==="chips" || c.tipo==="range"
+    ? el("span",{class:"flabel"}, txt, c.req ? el("span",{class:"req", "aria-hidden":"true", text:"*"}) : null)
+    : el("label",{for:"in-"+c.id}, txt, c.req ? el("span",{class:"req","aria-hidden":"true", text:"*"}) : null);
+  wrap.append(lab);
+  if (c.hint) wrap.append(el("span",{class:"hint", text:c.hint}));
+  if (c.tipo === "text" || c.tipo === "textarea") {
+    const inp = el(c.tipo==="text"?"input":"textarea",{id:"in-"+c.id, type:c.tipo==="text"?"text":null, placeholder:c.ph||"",
+      oninput:e=>{ form[c.id]=e.target.value; }});
+    inp.value = form[c.id] || "";
+    wrap.append(inp);
+  } else if (c.tipo === "chips") {
+    const box = el("div",{class:"chips", role:"group", "aria-label":c.label});
+    c.op.forEach((o,i) => {
+      const on = c.multi ? [].concat(form[c.id] || []).includes(o) : form[c.id]===o;
+      box.append(el("button",{type:"button", class:"chip", id:`ch-${c.id}-${i}`, "aria-pressed":String(on), text:o,
+        onclick:()=>toggleChip(c,o)}));
+    });
+    wrap.append(box);
+  } else if (c.tipo === "range") {
+    const v = form[c.id] || 3;
+    const now = el("span",{class:"range-now", text:`${v}/5 · ${c.escala[v-1]}`});
+    const inp = el("input",{type:"range", id:"in-"+c.id, min:"1", max:"5", step:"1", "aria-label":c.label,
+      oninput:e=>{ form[c.id]=+e.target.value; now.textContent = `${form[c.id]}/5 · ${c.escala[form[c.id]-1]}`; }});
+    inp.value = v;
+    wrap.append(el("div",{class:"range-wrap"}, now, inp, el("div",{class:"range-scale"}, el("span",{text:c.escala[0]}), el("span",{text:c.escala[4]}))));
+  }
+  return wrap;
+}
+
+function toggleChip(c, o){
+  if (c.multi) {
+    const arr = [].concat(form[c.id] || []);
+    const i = arr.indexOf(o);
+    if (i>=0) arr.splice(i,1); else { if (c.max && arr.length>=c.max) arr.shift(); arr.push(o); }
+    form[c.id] = arr;
+  } else form[c.id] = form[c.id]===o ? "" : o;
+  renderStep();
+}
+
+function renderStep(){
+  renderRuler();
+  const s = STEPS[step];
+  const host = $("#steps"); host.textContent = "";
+  const panel = el("div",{class:"panel"});
+  panel.append(el("div",{class:"step-head"},
+    el("span",{class:"eyebrow", text:`Etapa ${step+1} de ${STEPS.length} · ${s.nome}`}),
+    el("h2",{text:s.titulo}),
+    s.intro ? el("p",{class:"intro", text:s.intro}) : null));
+  if (step === 0 && !modoCliente) panel.append(el("div",{class:"row"},
+    el("button",{type:"button", class:"btn ghost", text:"Preencher com um perfil de exemplo", onclick:()=>{ form = {...blank(), ...structuredClone(EXEMPLO)}; renderStep(); }})));
+  if (s.id === "pauta") renderPautaStep(panel);
+  else if (s.id === "enviar") renderEnviarStep(panel);
+  else s.campos.forEach(c => panel.append(campoNode(c)));
+  const erro = el("div",{class:"err", id:"step-err", role:"alert"});
+  panel.append(erro);
+  const nav = el("div",{class:"nav"},
+    step>0 ? el("button",{type:"button", class:"btn", text:"Voltar", onclick:()=>goto(step-1)}) : el("span"),
+    s.id==="pauta" && !modoCliente
+      ? el("button",{type:"button", class:"btn primary big", id:"btn-gerar", text:"Gerar roteiro", onclick:()=>gerar(false)})
+      : s.id==="enviar" ? null
+      : el("button",{type:"button", class:"btn primary", text:"Próximo", onclick:()=>next()}));
+  panel.append(nav);
+  host.append(panel);
+}
+
+function faltando(i){
+  const s = STEPS[i]; const out = [];
+  for (const c of s.campos) {
+    if (!c.req || (c.showIf && !c.showIf(form))) continue;
+    const v = form[c.id];
+    if (Array.isArray(v) ? !v.length : !String(v||"").trim()) out.push(c.label);
+  }
+  if (s.id==="nicho" && form.nicho==="Outro" && !(form.nichoOutro||"").trim()) out.push("Qual nicho?");
+  if (s.id==="pauta" && form.pauta==="colar" && !(form.pautaColada||"").trim()) out.push("a notícia que você quer usar");
+  return out;
+}
+function next(){
+  const f = faltando(step);
+  if (f.length) { $("#step-err").textContent = "Falta responder: " + f.join(", ") + "."; return; }
+  if (STEPS[step].id === "nicho") registrarNicho();
+  goto(step+1);
+}
+function goto(i){
+  step = Math.max(0, Math.min(STEPS.length-1, i));
+  $("#result").hidden = true; $("#wizard").hidden = false;
+  renderStep();
+  $("#wizard").scrollIntoView({block:"start", behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"});
+}
+
+/* ---------- Notícias: as embutidas na página (para quem não tem login) + as do banco ---------- */
+function carregarEmbutidas(){
+  try {
+    const d = JSON.parse(document.getElementById("noticias-semana")?.textContent || "{}");
+    for (const [slug, v] of Object.entries(d.nichos || {})) noticias[slug] = {...v, slug};
+  } catch {}
+}
+function juntarNoticias(docs){
+  noticias = {}; carregarEmbutidas();
+  for (const [slug, v] of Object.entries(docs)) {
+    const atual = noticias[slug];
+    if (!atual || String(v.semana||"") >= String(atual.semana||"")) noticias[slug] = v;
+  }
+}
+const lerSnapNoticias = snap => { const docs = {}; snap.docs.forEach(x => { const v = x.data(); if (v) docs[x.id] = {...v, slug:x.id}; }); juntarNoticias(docs); };
+
+/* ---------- Etapa de pauta ---------- */
+function pautasDoNicho(){
+  const slug = slugify(nichoNome());
+  if (noticias[slug]?.itens?.length) return {doc:noticias[slug], proprio:true};
+  if (noticias["empreendedorismo"]?.itens?.length) return {doc:noticias["empreendedorismo"], proprio:false};
+  return {doc:null, proprio:false};
+}
+
+function renderPautaStep(panel){
+  const {doc, proprio} = pautasDoNicho();
+  const nome = nichoNome() || "seu nicho";
+  // Notícia que o cliente escolheu numa semana anterior e já saiu da lista atual.
+  const guardada = form.pautaItem && form.pauta === form.pautaItem.id && !(doc?.itens||[]).some(x => x.id === form.pautaItem.id) ? form.pautaItem : null;
+  const validos = ["auto","colar", ...(doc?.itens||[]).map(x=>x.id), ...(guardada ? [guardada.id] : [])];
+  if (!doc && !guardada) { if (form.pauta !== "colar") form.pauta = "colar"; }
+  else if (!validos.includes(form.pauta)) form.pauta = "auto";
+  if (modoCliente) panel.append(el("p",{class:"intro", text:"Escolha uma das notícias mais quentes da semana para o seu vídeo, ou traga uma notícia do seu interesse."}));
+  if (!dbReady && !doc) panel.append(el("div",{class:"empty", text:"Carregando as notícias da semana…"}));
+  else if (!doc) panel.append(el("div",{class:"empty", text: modoCliente ? "As notícias desta semana ainda não chegaram. Traga uma notícia do seu interesse abaixo." : "Ainda não há pautas salvas. Cole uma notícia abaixo para gerar o roteiro agora."}));
+  else {
+    panel.append(el("p",{class:"intro", text: proprio
+      ? `Notícias mais quentes de ${doc.nicho} na semana de ${fmtData(doc.semana)}.`
+      : `Notícias da semana de ${fmtData(doc.semana)}.`}));
+    if (!proprio) panel.append(el("div",{class:"note", text: modoCliente
+      ? `Ainda não temos notícias de ${nome} esta semana. Escolha uma de empreendedorismo (o roteiro conecta com ${nome}) ou traga a sua.`
+      : `Ainda não há pautas de ${nome}. O nicho entra na atualização de segunda. Por enquanto, escolha uma pauta de empreendedorismo e o roteiro conecta com ${nome}.`}));
+  }
+  const list = el("div",{class:"news", role:"radiogroup", "aria-label":"Notícia do roteiro"});
+  const opt = (id, title, meta, sum, item) => el("button",{type:"button", class:"pick", role:"radio", id:"pk-"+id, "aria-checked":String(form.pauta===id),
+      onclick:()=>{ form.pauta=id; if (item) form.pautaItem = structuredClone(item); renderStep(); }},
+    el("span",{class:"radio"}), el("span",{class:"pick-body"},
+      meta ? el("span",{class:"pick-meta", text:meta}) : null, el("span",{class:"pick-title", text:title}), sum ? el("span",{class:"pick-sum", text:sum}) : null));
+  if (guardada) list.append(opt(guardada.id, guardada.titulo, `Escolhida pelo cliente · ${fmtData(guardada.data)} · ${guardada.fonte||""}`, guardada.angulo || guardada.resumo, guardada));
+  if (doc) {
+    list.append(opt("auto", modoCliente ? "Escolham por mim a de maior potencial" : "Deixe o sistema escolher a de maior potencial", null,
+      "Compara as notícias com o perfil e escolhe a que tem mais chance de viralizar."));
+    doc.itens.forEach(it => list.append(opt(it.id, it.titulo, `${fmtData(it.data)} · ${it.fonte||""}`, it.angulo || it.resumo, it)));
+  }
+  list.append(opt("colar", modoCliente ? "Quero trazer minha própria notícia" : "Usar outra notícia", null,
+    modoCliente ? "Cole o link ou conte em poucas linhas a notícia que você quer comentar." : "Cole o texto ou o resumo de uma notícia."));
+  panel.append(list);
+  if (form.pauta === "colar") {
+    const ta = el("textarea",{id:"in-pautaColada", placeholder:"Cole o link, o título e os fatos principais da notícia.", oninput:e=>{form.pautaColada=e.target.value;}});
+    ta.value = form.pautaColada || ""; ta.style.minHeight = "120px";
+    panel.append(el("div",{class:"field"}, el("label",{for:"in-pautaColada", text: modoCliente ? "Sua notícia" : "Notícia colada"}), ta));
+  }
+}
+
+/* ---------- Modo cliente: enviar e importar respostas ---------- */
+const CAMPOS_BRIEFING = [...STEPS.slice(0,4).flatMap(s => s.campos.map(c => c.id)), "pauta", "pautaColada", "pautaItem"];
+function pautaResumo(){
+  if (form.pauta === "colar") return "Notícia própria: " + String(form.pautaColada||"").trim().slice(0,300);
+  if (form.pauta === "auto") return "Notícia: escolham por mim a de maior potencial";
+  return "Notícia escolhida: " + (form.pautaItem?.titulo || "");
+}
+function codificar(obj){
+  const bytes = new TextEncoder().encode(JSON.stringify(obj));
+  let bin = ""; for (let i=0;i<bytes.length;i++) bin += String.fromCharCode(bytes[i]);
+  return btoa(bin);
+}
+function decodificar(b64){
+  const bin = atob(b64);
+  return JSON.parse(new TextDecoder().decode(Uint8Array.from(bin, ch => ch.charCodeAt(0))));
+}
+function mensagemCliente(){
+  const dados = {}; CAMPOS_BRIEFING.forEach(k => { if (form[k] != null && form[k] !== "" && !(Array.isArray(form[k]) && !form[k].length)) dados[k] = form[k]; });
+  const esc = ["Reservado","Calmo","Equilibrado","Animado","Explosivo"];
+  const v = x => Array.isArray(x) ? x.join(", ") : String(x||"").trim();
+  const linhas = [
+    "Minhas respostas — O SEU ROTEIRO VIRAL!", "",
+    `Nome: ${v(form.nome)}`, form.arroba ? `@: ${v(form.arroba)}` : null,
+    `Energia na câmera: ${form.energia}/5 (${esc[(form.energia||3)-1]})`,
+    form.estilo?.length ? `Estilo: ${v(form.estilo)}` : null,
+    form.conforto ? `Jeito de gravar: ${v(form.conforto)}` : null,
+    form.perfilTipo ? `Perfil: ${v(form.perfilTipo)}` : null,
+    `Objetivos: ${v(form.objetivo)}`, form.oferta ? `Oferta: ${v(form.oferta)}` : null,
+    form.cta?.length ? `Ação no final: ${v(form.cta)}` : null,
+    form.publico ? `Público: ${v(form.publico)}` : null,
+    `Plataformas: ${v(form.plataformas)} · Duração: ${v(form.duracao)}`,
+    `Nicho: ${nichoNome()}${form.angulo ? " ("+v(form.angulo)+")" : ""}`,
+    pautaResumo(),
+    "", "Código das respostas (não apague):", "ORV1." + codificar(dados)
+  ];
+  return linhas.filter(x => x != null).join("\n");
+}
+function renderEnviarStep(panel){
+  const falta = STEPS.map((s,i) => ({i, f: s.id==="enviar" ? [] : faltando(i)})).filter(x => x.f.length);
+  if (falta.length) {
+    panel.append(el("div",{class:"note"}, "Antes de enviar, falta responder: ",
+      ...falta.map(x => el("button",{type:"button", class:"btn ghost", text:`${STEPS[x.i].nome} (${x.f.join(", ")})`, onclick:()=>goto(x.i)}))));
+    return;
+  }
+  caixaEnvio(panel);
+}
+function caixaEnvio(panel){
+  const msg = mensagemCliente();
+  const box = el("textarea",{id:"in-envio", class:"caption send-box", readonly:true, "aria-label":"Mensagem para enviar"});
+  box.value = msg; box.style.minHeight = "200px";
+  const toast = el("span",{class:"toast", role:"status"});
+  panel.append(el("div",{class:"row"},
+    el("button",{type:"button", class:"btn primary big", text:"Copiar minhas respostas", onclick:async()=>{
+      try { await navigator.clipboard.writeText(msg); toast.textContent = "Copiado. Agora cole na conversa e envie."; }
+      catch { box.focus(); box.select(); toast.textContent = "Texto selecionado. Copie e cole na conversa."; }
+    }}), toast), box);
+}
+function lerCodigo(texto){
+  const m = String(texto||"").match(/ORV1\.([A-Za-z0-9+/=\s]+)/);
+  if (!m) return null;
+  try { const d = decodificar(m[1].replace(/\s+/g,"")); return d && typeof d === "object" ? d : null; } catch { return null; }
+}
+// Lê respostas soltas do WhatsApp e transforma nos campos do questionário.
+function promptLeitura(texto){
+  const campos = STEPS.slice(0,4).flatMap(s => s.campos).map(c => {
+    const tipo = c.tipo === "range" ? "número de 1 a 5"
+      : c.tipo === "chips" ? (c.multi ? "lista com valores desta lista" : "um valor desta lista") + ": " + JSON.stringify(c.op)
+      : "texto, com as palavras do cliente";
+    return `- ${c.id} (${c.label}): ${tipo}`;
+  }).join("\n");
+  return `Abaixo estão as respostas que um cliente mandou por WhatsApp para um questionário de criação de vídeos curtos. As perguntas eram, em ordem: @ principal; o que a pessoa é hoje (empreendedor, profissional, criador de conteúdo ou começando); energia na câmera de 1 a 5; estilo de comunicação; jeito de gravar (a, b, c ou d); bordões; autoridade; o que não topa fazer; objetivos; o que vende; público; desejos e medos do público; ação no final do vídeo; referências; meta em números; plataformas; duração; tipo de gancho; formato; ritmo dos cortes; recursos para gravar; nicho; ângulo; temas a evitar; notícia que quer comentar. As respostas podem vir numeradas, fora de ordem ou como transcrição de áudio.
+
+Preencha estes campos:
+- nome: nome do cliente, se aparecer na mensagem
+${campos}
+- pauta: "colar" se o cliente mandou uma notícia ou link para comentar, senão "auto"
+- pautaColada: a notícia ou o link que o cliente mandou, com as palavras dele (vazio se não mandou)
+
+Regras: nos campos de lista, use somente valores exatamente como estão escritos nas listas, escolhendo o mais próximo do que o cliente disse. No jeito de gravar, (a), (b), (c) e (d) correspondem às opções na ordem da lista. Em "objetivo", mantenha a ordem que o cliente usou (o primeiro é o principal). No nicho, se nada da lista servir, use "Outro" e escreva o nicho em "nichoOutro". Em "plataformas", "Reels" é "Instagram Reels" e "Shorts" é "YouTube Shorts". Se uma resposta não aparecer, deixe o campo de fora. Não invente nada.
+
+Responda apenas com um objeto JSON.
+
+RESPOSTAS DO CLIENTE:
+${texto.slice(0, 12000)}`;
+}
+function limparLeitura(d){
+  const out = {};
+  for (const c of STEPS.slice(0,4).flatMap(s => s.campos)) {
+    const v = d[c.id];
+    if (v == null || v === "") continue;
+    if (c.tipo === "range") { const n = Math.round(Number(v)); if (n >= 1 && n <= 5) out[c.id] = n; }
+    else if (c.tipo === "chips" && c.multi) { const a = [].concat(v).map(String).filter(x => c.op.includes(x)); if (a.length) out[c.id] = c.max ? a.slice(0, c.max) : a; }
+    else if (c.tipo === "chips") { if (c.op.includes(String(v))) out[c.id] = String(v); else if (c.id === "nicho") { out.nicho = "Outro"; out.nichoOutro = String(v); } }
+    else out[c.id] = String(v).trim();
+  }
+  if (d.nome) out.nome = String(d.nome).trim();
+  out.pauta = d.pauta === "colar" && String(d.pautaColada||"").trim() ? "colar" : "auto";
+  if (out.pauta === "colar") out.pautaColada = String(d.pautaColada).trim();
+  return out;
+}
+async function importar(){
+  const msgEl = $("#importar-msg");
+  const btn = $("#btn-importar");
+  const texto = $("#in-importar").value;
+  const nomeDigitado = $("#in-importar-nome").value.trim();
+  if (!texto.trim()) { msgEl.textContent = "Cole a mensagem do cliente primeiro."; return; }
+  let limpo = {};
+  const dados = lerCodigo(texto);
+  if (dados) {
+    CAMPOS_BRIEFING.forEach(k => { if (k in dados) limpo[k] = dados[k]; });
+  } else {
+    if (!sample) { msgEl.textContent = "Para ler respostas do WhatsApp, abra esta página no Claude."; return; }
+    btn.disabled = true; msgEl.textContent = "Lendo as respostas…";
+    try { limpo = limparLeitura(await sample.json(promptLeitura(texto), {cache:false}) || {}); }
+    catch(e) { btn.disabled = false; msgEl.textContent = ERROS[e?.code] || "Não deu pra ler as respostas agora. Tente de novo."; return; }
+    btn.disabled = false;
+  }
+  if (nomeDigitado) limpo.nome = nomeDigitado;
+  form = normalizar({...blank(), ...limpo});
+  if (!form.pauta) form.pauta = "auto";
+  if (form.pauta !== "auto" && form.pauta !== "colar" && !form.pautaItem) form.pauta = "auto";
+  form._importado = true;   // o perfil é salvo junto com o primeiro roteiro gerado
+  lastRoteiro = null;
+  msgEl.textContent = "";
+  $("#in-importar").value = ""; $("#in-importar-nome").value = "";
+  showView("roteiro");
+  // Se faltou alguma resposta obrigatória, abre a etapa para completar; senão salva e gera o roteiro na hora.
+  const iP = STEPS.findIndex(s => s.id === "pauta");
+  for (let i = 0; i <= iP; i++) {
+    const f = faltando(i);
+    if (f.length) { goto(i); $("#step-err").textContent = "A mensagem não trouxe: " + f.join(", ") + ". Complete aqui e avance até gerar o roteiro."; return; }
+  }
+  step = iP;
+  gerar(false);
+}
+document.getElementById("btn-importar").addEventListener("click", importar);
+
+/* ---------- Prompt ---------- */
+const L = (k, v) => `- ${k}: ${Array.isArray(v) ? (v.length? v.join(", ") : "não informado") : (String(v||"").trim() || "não informado")}`;
+function noticiaTexto(it){
+  return [`Título: ${it.titulo}`, `Data: ${it.data||""}`, `Fonte: ${it.fonte||""} ${it.url||""}`, `Resumo: ${it.resumo||""}`,
+    it.fatos?.length ? "Fatos e números:\n" + it.fatos.map(f=>"  • "+f).join("\n") : "", it.angulo ? `Ângulo sugerido: ${it.angulo}` : ""].filter(Boolean).join("\n");
+}
+function montarPrompt(){
+  const {doc} = pautasDoNicho();
+  const esc = ["Reservado","Calmo","Equilibrado","Animado","Explosivo"];
+  let pautaBloco;
+  if (form.pauta === "colar") pautaBloco = "NOTÍCIA (colada pelo cliente):\n" + form.pautaColada.trim();
+  else if (form.pauta === "auto" && doc) pautaBloco = "NOTÍCIAS DA SEMANA (escolha a UMA com maior potencial viral para este cliente e diga qual escolheu no campo \"noticia\"):\n\n" + doc.itens.map((it,i)=>`[${i+1}]\n`+noticiaTexto(it)).join("\n\n");
+  else { const it = doc?.itens.find(x=>x.id===form.pauta) || (form.pautaItem?.id === form.pauta ? form.pautaItem : null); pautaBloco = "NOTÍCIA ESCOLHIDA:\n" + noticiaTexto(it || {titulo:"(notícia não encontrada)"}); }
+  const seg = parseInt(form.duracao,10) || 45;
+  return `Você é roteirista-chefe de vídeos curtos virais para criadores de conteúdo brasileiros, com foco em empreendedores e no mundo dos negócios. Escreva UM roteiro completo, pronto para gravar, para o cliente abaixo, baseado na notícia indicada.
+
+PERFIL DO CLIENTE
+${L("Nome", form.nome)}
+${L("@", form.arroba)}
+- Energia na câmera: ${form.energia}/5 (${esc[(form.energia||3)-1]})
+${L("Estilo de comunicação", form.estilo)}
+${L("Hoje o cliente é", form.perfilTipo)}
+${L("Jeito de gravar", form.conforto)}
+${L("Expressões e bordões próprios", form.expressoes)}
+${L("Autoridade / história", form.autoridade)}
+${L("Não topa fazer", form.naoFaz)}
+
+OBJETIVO
+${L("Objetivos (o primeiro é o principal)", form.objetivo)}
+${L("Oferta", form.oferta)}
+${L("Público-alvo", form.publico)}
+${L("Desejos e medos do público", form.dor)}
+${L("Ações finais desejadas (CTA)", form.cta)}
+${L("Referências", form.referencias)}
+${L("Meta", form.meta)}
+
+FORMATO
+${L("Plataformas", form.plataformas)}
+- Duração exata: ${seg} segundos
+${L("Tipo de hook", form.hook || "Deixe o sistema escolher")}
+${L("Formato do vídeo", form.formatoVideo)}
+${L("Ritmo de cortes", form.ritmo)}
+${L("Recursos de gravação", form.recursos)}
+
+NICHO
+${L("Nicho", nichoNome())}
+${L("Ângulo", form.angulo)}
+${L("Evitar", form.evitar)}
+
+${pautaBloco}
+
+REGRAS
+1. Os 3 primeiros segundos param a rolagem com uma fala de impacto, no tipo de hook pedido (se "Deixe o sistema escolher", use o mais forte para esta notícia).
+2. Escreva do jeito que o cliente fala: vocabulário e energia do perfil, bordões dele com naturalidade e sem exagero. Nunca peça algo da lista "não topa fazer". Se ele trava na câmera, use frases curtas e fáceis de decorar.
+3. Ritmo de fala de cerca de 2,5 palavras por segundo. Cada cena precisa caber no tempo dela, e as cenas somam exatamente ${seg} segundos. Use timecodes no formato m:ss.
+4. Estrutura: hook → contexto em uma frase → o dado ou a virada mais surpreendente → a opinião ou lição do cliente, ligada ao nicho e ao objetivo → CTA alinhado ao objetivo. Coloque um gancho de retenção no meio (promessa do que vem a seguir).
+5. Use só fatos que estão na notícia. Não invente números, nomes nem datas. Mantenha valores na moeda original.
+6. Português do Brasil falado, sem cara de texto lido. Respeite os temas a evitar.
+7. A legenda do post cita a fonte da notícia.
+9. Se o cliente não tem negócio nem produto, trate a notícia pelo olhar de quem cria conteúdo: opinião, curiosidade, lição prática para a audiência. Não force venda nem fale como dono de empresa.
+10. No CTA, use no máximo duas das ações finais pedidas, combinadas de um jeito natural, priorizando a que serve ao objetivo principal.
+8. Cada cena tem só duas coisas: a fala do cliente e uma sugestão de edição (corte, zoom, efeito sonoro, música, inserção de print ou imagem da notícia, ritmo). Não descreva texto na tela nem enquadramento.
+
+RESPOSTA: apenas um objeto JSON, sem nenhum texto fora dele, neste formato:
+{"titulo":"nome curto da ideia do vídeo","noticia":"qual notícia foi usada (título)","porQueViraliza":"2 frases sobre o gatilho que faz esse vídeo performar","hookTipo":"tipo de hook usado","cenas":[{"inicio":"0:00","fim":"0:03","bloco":"Hook","fala":"o que o cliente fala","edicao":"sugestão de edição para esta cena"}],"cta":"a fala final de chamada para ação","legenda":"legenda do post, com a fonte","hashtags":["#exemplo"],"hooksAlternativos":["outra abertura 1","outra abertura 2","outra abertura 3"],"dicasDeGravacao":["dica personalizada para este cliente"]}`;
+}
+
+/* ---------- Geração ---------- */
+const ERROS = {
+  not_granted:"O uso do Claude não foi liberado nesta página. Recarregue e toque em permitir para gerar roteiros.",
+  sampling_disabled:"O Claude não está disponível para esta conta.",
+  rate_limited:"Muitos pedidos seguidos ou limite de uso atingido. Espere alguns minutos e tente de novo.",
+  session_expired:"Sua sessão expirou. Entre de novo no Claude e recarregue a página.",
+  refused:"O Claude recusou essa pauta. Tente outra notícia.",
+  invalid_json:"O roteiro veio num formato inesperado. Toque em tentar de novo.",
+  empty_completion:"O Claude não devolveu texto. Tente de novo com outra pauta.",
+  prompt_too_large:"A notícia colada é longa demais. Cole só o resumo e os números principais."
+};
+
+async function gerar(novaVersao){
+  const iP = STEPS.findIndex(s => s.id === "pauta");
+  for (let i=0;i<=iP;i++){ const f = faltando(i); if (f.length){ goto(i); $("#step-err").textContent = "Falta responder: "+f.join(", ")+"."; return; } }
+  if (form.pauta === "auto" && !pautasDoNicho().doc) { goto(iP); $("#step-err").textContent = "Escolha uma notícia ou cole uma."; return; }
+  const res = $("#result"); res.hidden = false; $("#wizard").hidden = true; res.textContent = "";
+  const panel = el("div",{class:"panel"}); res.append(panel);
+  if (!sample) {
+    panel.append(el("h2",{text:"Não deu pra gerar aqui"}),
+      el("p",{class:"intro", text:"A geração de roteiros funciona quando esta página é aberta dentro do Claude, com login. Abra o link pelo app ou site do Claude."}),
+      el("div",{class:"nav"}, el("button",{type:"button", class:"btn", text:"Voltar ao briefing", onclick:()=>goto(STEPS.length-1)})));
+    return;
+  }
+  const status = el("p",{class:"intro", text:"Pensando no gancho e cronometrando as cenas. Leva de 20 segundos a 1 minuto."});
+  ctl = new AbortController();
+  panel.append(el("div",{class:"progress"},
+    el("span",{class:"eyebrow", text:"Escrevendo roteiro"}), el("div",{class:"pulse","aria-hidden":"true"}, el("i"),el("i"),el("i"),el("i"),el("i")),
+    status, el("button",{type:"button", class:"btn", text:"Parar", onclick:()=>ctl.abort()})));
+  res.scrollIntoView({block:"start"});
+  let chars = 0;
+  try {
+    const opts = {signal:ctl.signal, onText:({text})=>{ chars = text.length; status.textContent = `Escrevendo… ${chars} caracteres`; }};
+    if (novaVersao === true) opts.cache = false;
+    const r = await sample.json(montarPrompt(), opts);
+    if (!r || !Array.isArray(r.cenas)) throw {code:"invalid_json"};
+    lastRoteiro = {...r, _duracao: form.duracao, _plataformas: form.plataformas, _geradoEm: new Date().toISOString()};
+    renderRoteiro(lastRoteiro);
+    if (form._importado) { delete form._importado; const st = document.getElementById("hist-status"); await salvarCliente(st || el("span")); }
+    else salvarNoHistorico(lastRoteiro);
+  } catch(e) {
+    if (e?.code === "cancelled") { goto(STEPS.length-1); return; }
+    panel.textContent = "";
+    panel.append(el("h2",{text:"O roteiro não saiu"}), el("p",{class:"intro", text: ERROS[e?.code] || "Falha de conexão com o Claude. Tente de novo em instantes."}),
+      el("div",{class:"nav"}, el("button",{type:"button", class:"btn", text:"Voltar ao briefing", onclick:()=>goto(STEPS.length-1)}),
+        e?.code==="not_granted"||e?.code==="sampling_disabled" ? null : el("button",{type:"button", class:"btn primary", text:"Tentar de novo", onclick:()=>gerar(true)})));
+  }
+}
+
+const S = v => (v==null ? "" : String(v));
+function renderRoteiro(r){
+  const res = $("#result"); res.hidden = false; $("#wizard").hidden = true; res.textContent = "";
+  const p = el("div",{class:"panel script"});
+  const tags = [r._duracao, ...(r._plataformas||[]), r.hookTipo ? "Hook: "+r.hookTipo : null].filter(Boolean);
+  p.append(el("div",{class:"script-top"},
+    el("span",{class:"eyebrow", text:`Roteiro · ${S(form.nome)||"cliente"}`}),
+    el("h2",{class:"script-title", text:S(r.titulo)}),
+    el("div",{class:"tags"}, tags.map(t=>el("span",{class:"tag", text:t}))),
+    r.noticia ? el("p",{class:"intro", text:"Pauta: "+S(r.noticia)}) : null));
+  if (r.porQueViraliza) p.append(el("div",{class:"why"}, el("b",{text:"Por que pode viralizar"}), S(r.porQueViraliza)));
+
+  const tl = el("div",{class:"timeline"});
+  (r.cenas||[]).forEach(c => {
+    const dir = el("dl",{class:"dir"});
+    [["Edição",c.edicao]].forEach(([k,v]) => { if (S(v).trim()) dir.append(el("dt",{text:k}), el("dd",{text:S(v)})); });
+    tl.append(el("div",{class:"scene"},
+      el("div",{class:"tc"}, el("span",{text:`${S(c.inicio)}–${S(c.fim)}`}), el("small",{text:S(c.bloco)})),
+      el("div",{class:"scene-body"}, el("p",{class:"fala", text:S(c.fala)}), dir)));
+  });
+  p.append(el("div",{class:"block"}, el("h3",{text:"Cenas"}), tl));
+  if (r.cta) p.append(el("div",{class:"block"}, el("h3",{text:"Chamada final"}), el("p",{class:"fala", style:"margin:0", text:S(r.cta)})));
+  const hs = Array.isArray(r.hashtags) ? r.hashtags.map(S).join(" ") : "";
+  if (r.legenda) p.append(el("div",{class:"block"}, el("h3",{text:"Legenda do post"}), el("div",{class:"caption", text:S(r.legenda)+(hs?"\n\n"+hs:"")})));
+  if (r.hooksAlternativos?.length) p.append(el("div",{class:"block"}, el("h3",{}, "Outras aberturas", el("small",{text:"para testar"})),
+    el("ol",{class:"alts"}, r.hooksAlternativos.map(h=>el("li",{text:S(h)})))));
+  if (r.dicasDeGravacao?.length) p.append(el("div",{class:"block"}, el("h3",{text:"Dicas de gravação"}),
+    el("ul",{class:"tips"}, r.dicasDeGravacao.map(h=>el("li",{text:S(h)})))));
+
+  const toast = el("span",{class:"toast", role:"status"});
+  if (!modoCliente) p.append(el("span",{class:"toast", id:"hist-status", role:"status",
+    text: r._salvoId ? `No histórico de ${S(form.nome)}${r._geradoEm ? " · gerado em "+fmtData(r._geradoEm) : ""}.`
+      : form._id ? "" : "Toque em Salvar cliente para guardar este roteiro no histórico."}));
+  const envio = el("div",{class:"block", hidden:true});
+  p.append(el("div",{class:"row"},
+    el("button",{type:"button", class:"btn primary", text:"Copiar roteiro", onclick:()=>copiar(textoRoteiro(r), toast)}),
+    el("button",{type:"button", class:"btn", text:"Gerar outra versão", onclick:()=>gerar(true)}),
+    modoCliente
+      ? el("button",{type:"button", class:"btn", text:"Enviar minhas respostas", onclick:()=>{ envio.hidden = !envio.hidden; }})
+      : el("button",{type:"button", class:"btn", text:"Salvar cliente", onclick:()=>salvarCliente(toast)}),
+    el("button",{type:"button", class:"btn ghost", text:"Ajustar respostas", onclick:()=>goto(0)}),
+    toast));
+  if (modoCliente) {
+    envio.append(el("h3",{text:"Enviar suas respostas"}),
+      el("p",{class:"intro", text:"Quer roteiros novos toda semana? Copie e mande esta mensagem para quem te passou o link, assim seu perfil fica guardado."}));
+    caixaEnvio(envio);
+    p.append(envio);
+  }
+  res.append(p);
+  res.scrollIntoView({block:"start"});
+}
+
+function textoRoteiro(r){
+  const out = [S(r.titulo).toUpperCase(), [r._duracao, ...(r._plataformas||[])].filter(Boolean).join(" · "), ""];
+  if (r.noticia) out.push("Pauta: "+S(r.noticia), "");
+  (r.cenas||[]).forEach(c => {
+    out.push(`[${S(c.inicio)}–${S(c.fim)}] ${S(c.bloco)}`, `Fala: ${S(c.fala)}`);
+    if (S(c.edicao).trim()) out.push(`Edição: ${S(c.edicao)}`);
+    out.push("");
+  });
+  if (r.cta) out.push("CTA: "+S(r.cta), "");
+  if (r.legenda) out.push("LEGENDA", S(r.legenda), (r.hashtags||[]).join(" "), "");
+  if (r.hooksAlternativos?.length) out.push("OUTRAS ABERTURAS", ...r.hooksAlternativos.map((h,i)=>`${i+1}. ${S(h)}`), "");
+  if (r.dicasDeGravacao?.length) out.push("DICAS DE GRAVAÇÃO", ...r.dicasDeGravacao.map(h=>"- "+S(h)));
+  return out.join("\n");
+}
+async function copiar(txt, toast){
+  try { await navigator.clipboard.writeText(txt); toast.textContent = "Roteiro copiado."; }
+  catch {
+    const ta = el("textarea",{class:"caption", readonly:true, "aria-label":"Roteiro para copiar"}); ta.value = txt; ta.style.minHeight="240px";
+    toast.textContent = "Selecione o texto abaixo e copie.";
+    $("#result .panel").append(ta); ta.focus(); ta.select();
+  }
+}
+
+/* ---------- Banco: clientes e nichos ---------- */
+async function registrarNicho(){
+  const nome = nichoNome(); const slug = slugify(nome);
+  if (!db || !gestor || !slug || noticias[slug] || nichos[slug]) return;
+  try { await db.doc("nichos/"+slug).set({nome, slug, pedidoEm:new Date().toISOString()}); } catch {}
+}
+async function salvarCliente(toast){
+  if (!db) { toast.textContent = "Salvar clientes funciona quando a página é aberta no Claude, com login."; return; }
+  const id = form._id || (slugify(form.nome).slice(0,40) || "cliente") + "-" + Math.random().toString(36).slice(2,6);
+  const {_id, ...dados} = form;
+  const body = {...structuredClone(dados), nichoNome:nichoNome(), nichoSlug:slugify(nichoNome()), atualizadoEm:new Date().toISOString()};
+  if (lastRoteiro) body.ultimoRoteiro = structuredClone(lastRoteiro);
+  try {
+    await db.doc("clientes/"+id).set(body); form._id = id; await registrarNicho();
+    const noHist = lastRoteiro && !lastRoteiro._salvoId ? await salvarNoHistorico(lastRoteiro) : false;
+    toast.textContent = noHist ? "Cliente salvo, com o roteiro no histórico." : "Cliente salvo.";
+  }
+  catch(e){ toast.textContent = e?.code==="quota_exceeded" ? "O espaço de clientes encheu. Exclua perfis antigos." : "Não deu pra salvar. Você precisa de permissão de edição nesta página."; }
+}
+async function salvarNoHistorico(r){
+  if (!db || !form._id || !r || r._salvoId) return false;
+  const rid = "r-" + Date.now().toString(36) + Math.random().toString(36).slice(2,5);
+  const corpo = structuredClone(r); delete corpo._salvoId;
+  corpo._geradoEm = corpo._geradoEm || new Date().toISOString();
+  corpo.geradoEm = corpo._geradoEm;
+  try {
+    await db.collection("clientes/"+form._id+"/roteiros").doc(rid).set(corpo);
+    r._salvoId = rid;
+    try { await db.doc("clientes/"+form._id).update({ultimoRoteiro:{...corpo, _salvoId:rid}, atualizadoEm:new Date().toISOString()}); } catch {}
+    const st = document.getElementById("hist-status"); if (st) st.textContent = `Salvo no histórico de ${S(form.nome)}.`;
+    return true;
+  } catch { return false; }
+}
+
+/* ---------- Aba Pautas ---------- */
+function renderPautas(){
+  const host = $("#pautas-list"); host.textContent = "";
+  if (!db) { host.append(el("div",{class:"empty", text: dbReady ? "As pautas aparecem quando a página é aberta no Claude, com login." : "Carregando pautas…"})); return; }
+  const slugs = Object.keys(noticias).sort((a,b)=> a==="empreendedorismo" ? -1 : b==="empreendedorismo" ? 1 : a.localeCompare(b));
+  if (!slugs.length) host.append(el("div",{class:"empty", text:"Nenhuma pauta ainda. A primeira leva chega na próxima segunda de manhã."}));
+  const wrap = el("div",{style:"display:flex;flex-direction:column;gap:28px"});
+  slugs.forEach(s => {
+    const d = noticias[s];
+    const sec = el("div",{class:"niche"}, el("div",{class:"niche-head"}, el("h3",{text:d.nicho||s}), el("span",{class:"pick-meta", text:`Semana de ${fmtData(d.semana)}`})));
+    const list = el("div");
+    (d.itens||[]).forEach(it => list.append(el("article",{class:"item"},
+      el("span",{class:"pick-meta", text:`${fmtData(it.data)} · ${it.fonte||""}`}),
+      el("span",{class:"pick-title", text:it.titulo}),
+      it.resumo ? el("span",{class:"pick-sum", text:it.resumo}) : null,
+      it.fatos?.length ? el("ul",{class:"facts"}, it.fatos.map(f=>el("li",{text:f}))) : null,
+      it.angulo ? el("span",{class:"angle"}, el("b",{text:"Ângulo viral: "}), it.angulo) : null,
+      it.url ? el("a",{href:it.url, target:"_blank", rel:"noopener", text:"Ler a notícia ↗"}) : null)));
+    sec.append(list); wrap.append(sec);
+  });
+  const pend = Object.values(nichos).filter(n => !noticias[n.slug]);
+  if (pend.length) wrap.append(el("div",{class:"niche"}, el("h3",{text:"Entram na próxima segunda"}),
+    el("div",{class:"pending-list"}, pend.map(n=>el("span",{class:"tag", text:n.nome})))));
+  host.append(wrap);
+}
+
+/* ---------- Aba Clientes ---------- */
+let confirmando = null;
+let historico = null; // {id, itens: null (carregando) | [], erro}
+function renderClientes(){
+  const host = $("#clientes-list"); host.textContent = "";
+  if (!db) { host.append(el("div",{class:"empty", text: dbReady ? "Clientes salvos aparecem quando a página é aberta no Claude, com login." : "Carregando clientes…"})); return; }
+  if (!clientes.length) { host.append(el("div",{class:"empty", text:"Nenhum cliente salvo. Gere um roteiro e toque em \"Salvar cliente\" para guardar o perfil aqui."})); return; }
+  const list = el("div");
+  clientes.forEach(c => {
+    const aberto = historico?.id === c.id;
+    const acoes = confirmando === c.id
+      ? el("div",{class:"row"}, el("span",{text:"Excluir este perfil e todo o histórico?"}),
+          el("button",{type:"button", class:"btn", text:"Cancelar", onclick:()=>{confirmando=null; renderClientes();}}),
+          el("button",{type:"button", class:"btn primary", text:"Excluir", onclick:()=>excluir(c.id)}))
+      : el("div",{class:"row"},
+          el("button",{type:"button", class:"btn", "aria-expanded":String(aberto), text: aberto ? "Fechar histórico" : "Histórico", onclick:()=>alternarHistorico(c)}),
+          el("button",{type:"button", class:"btn primary", text:"Novo roteiro", onclick:()=>abrirCliente(c)}),
+          el("button",{type:"button", class:"btn ghost", text:"Excluir", onclick:()=>{confirmando=c.id; renderClientes();}}));
+    list.append(el("div",{class:"client"},
+      el("div",{class:"client-info"}, el("span",{class:"pick-title", text:c.nome||"Sem nome"}),
+        el("span",{class:"pick-sum", text:[c.arroba, c.nichoNome, [].concat(c.objetivo || [])[0]].filter(Boolean).join(" · ")})), acoes));
+    if (aberto) list.append(painelHistorico(c));
+  });
+  host.append(list);
+}
+function painelHistorico(c){
+  const box = el("div",{class:"hist", "aria-label":`Histórico de ${c.nome||"cliente"}`});
+  if (historico.itens === null) { box.append(el("span",{class:"pick-sum", style:"padding:10px 0", text:"Carregando roteiros…"})); return box; }
+  if (historico.erro) { box.append(el("span",{class:"err", style:"padding:10px 0", text:historico.erro})); return box; }
+  let itens = historico.itens;
+  if (!itens.length && c.ultimoRoteiro) itens = [{...c.ultimoRoteiro, _id:c.ultimoRoteiro._salvoId || "ultimo"}];
+  if (!itens.length) { box.append(el("span",{class:"pick-sum", style:"padding:10px 0", text:"Nenhum roteiro ainda. Toque em Novo roteiro para fazer o primeiro."})); return box; }
+  box.append(el("span",{class:"pick-meta", style:"padding-top:8px", text:`${itens.length} ${itens.length===1?"roteiro":"roteiros"}`}));
+  itens.forEach(r => box.append(el("div",{class:"hist-item"},
+    el("div",{class:"client-info"},
+      el("span",{class:"pick-meta", text:[r._geradoEm ? fmtData(r._geradoEm) + " " + new Date(r._geradoEm).getFullYear() : null, r._duracao].filter(Boolean).join(" · ")}),
+      el("span",{class:"pick-title", text:S(r.titulo)||"Roteiro"}),
+      r.noticia ? el("span",{class:"pick-sum", text:"Pauta: "+S(r.noticia)}) : null),
+    el("button",{type:"button", class:"btn", text:"Abrir", onclick:()=>abrirRoteiro(c, r)}))));
+  return box;
+}
+async function alternarHistorico(c){
+  if (historico?.id === c.id) { historico = null; renderClientes(); return; }
+  historico = {id:c.id, itens:null}; renderClientes();
+  try {
+    const snap = await db.collection("clientes/"+c.id+"/roteiros").orderBy("geradoEm","desc").limit(200).get();
+    if (historico?.id !== c.id) return;
+    historico.itens = snap.docs.map(d => ({...d.data(), _id:d.id}));
+  } catch(e) { if (historico?.id === c.id) { historico.itens = []; historico.erro = "Não deu pra carregar o histórico agora. Tente de novo em instantes."; } }
+  renderClientes();
+}
+function carregarCliente(c){
+  const {id, nichoNome:_n, nichoSlug:_s, atualizadoEm:_a, ultimoRoteiro, ...dados} = c;
+  form = normalizar({...blank(), ...structuredClone(dados), _id:id, pauta:"auto", pautaColada:""});
+}
+function abrirCliente(c){
+  carregarCliente(c); lastRoteiro = null;
+  showView("roteiro"); goto(STEPS.length-1);
+}
+function abrirRoteiro(c, r){
+  carregarCliente(c);
+  const {_id, ...resto} = r;
+  lastRoteiro = {...structuredClone(resto), _salvoId: r._salvoId || _id};
+  showView("roteiro"); renderRoteiro(lastRoteiro);
+}
+async function excluir(id){
+  try {
+    const snap = await db.collection("clientes/"+id+"/roteiros").get();
+    for (const d of snap.docs) { try { await db.doc("clientes/"+id+"/roteiros/"+d.id).delete(); } catch {} }
+  } catch {}
+  try { await db.doc("clientes/"+id).delete(); } catch {}
+  if (historico?.id === id) historico = null;
+  confirmando = null; renderClientes();
+}
+
+/* ---------- Início ---------- */
+carregarEmbutidas();
+const hash = (location.hash||"").replace("#","");
+if (hash === "cliente") setModoCliente(true);
+else showView(VIEWS.includes(hash) ? hash : "roteiro");
+renderStep();
+
+(async () => {
+  const c = window.claude;
+  const usar = n => c?.use ? c.use(n).catch(()=>null) : Promise.resolve(null);
+  const [d, s, u] = await Promise.all([usar("db"), usar("sample"), usar("user")]);
+  db = d; sample = s;
+  // Só o dono (ou quem edita a página) vê o painel; qualquer outra pessoa vê o questionário de cliente.
+  gestor = !!(db || sample);
+  if (u) { const [o, e] = await Promise.all([u.isOwner().catch(()=>false), u.canEdit().catch(()=>false)]); gestor = !!(o || e); }
+  if (modoCliente || !gestor) {
+    // Cliente: escolhe a notícia (embutida na página) e envia as respostas pelo WhatsApp.
+    sample = null;
+    const ae = document.activeElement?.id;
+    setModoCliente(true);
+    if (!$("#wizard").hidden) { renderStep(); if (ae) document.getElementById(ae)?.focus(); }
+    if (!db) { dbReady = true; refresh(); return; }
+    db.collection("noticias").onSnapshot(snap => { lerSnapNoticias(snap); dbReady = true; refresh(); }, () => { dbReady = true; refresh(); });
+    return;
+  }
+  if (!db) { dbReady = true; refresh(); return; }
+  db.collection("noticias").onSnapshot(snap => { lerSnapNoticias(snap); dbReady = true; refresh(); }, () => { dbReady = true; refresh(); });
+  db.collection("nichos").onSnapshot(snap => {
+    nichos = {}; snap.docs.forEach(x => { const v = x.data(); if (v) nichos[x.id] = {...v, slug:x.id}; }); refresh();
+  }, () => {});
+  db.collection("clientes").onSnapshot(snap => {
+    clientes = snap.docs.map(x => ({id:x.id, ...x.data()})).sort((a,b)=>String(b.atualizadoEm||"").localeCompare(String(a.atualizadoEm||"")));
+    refresh();
+  }, () => {});
+})();
+
+function refresh(){
+  const v = document.querySelector(".tab[aria-selected='true']")?.dataset.view;
+  if (v === "pautas") renderPautas();
+  if (v === "clientes") renderClientes();
+  if (v === "roteiro" && STEPS[step].id === "pauta" && !$("#wizard").hidden) {
+    const ae = document.activeElement?.id;
+    renderStep();
+    if (ae) document.getElementById(ae)?.focus();
+  }
+}
+})();
+</script>
+
+</body></html>
