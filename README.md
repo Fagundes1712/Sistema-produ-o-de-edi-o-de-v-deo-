@@ -1,234 +1,389 @@
 <p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/taste-skill-wordmark-dark.png" />
-    <img src="assets/taste-skill-wordmark.png" alt="Taste Skill" width="340" />
-  </picture>
-</p>
-
-<p align="center">
-  <a href="https://tasteskill.dev" title="Visit tasteskill.dev"><img src="https://img.shields.io/badge/website-tasteskill.dev-24292f?style=flat" alt="Visit tasteskill.dev" /></a>
-  &nbsp;
-  <a href="https://tastecode.dev" title="Visit tastecode.dev"><img src="https://img.shields.io/badge/new-TasteCode-ff6b00?style=flat" alt="New: TasteCode" /></a>
-  &nbsp;
-  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-24292f?style=flat&amp;logo=github&amp;logoColor=white" alt="MIT License" /></a>
-  &nbsp;
-  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/changelog-view-24292f?style=flat" alt="Changelog" /></a>
-</p>
-
-<p align="center">
-  <a href="https://tastecode.dev">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="assets/readme-tastecode-dark.webp" />
-      <img src="assets/readme-tastecode.webp" alt="TasteCode is here. Taste Skill as a desktop app, with a design agent built in. Free and open source. Download at tastecode.dev" width="100%" />
-    </picture>
+  <a href="https://strix.ai/">
+    <img src="https://github.com/usestrix/.github/raw/main/imgs/cover.png" alt="Strix Banner" width="100%">
   </a>
 </p>
 
-<h3 align="center">Sponsors</h3>
+<div align="center">
 
-<table align="center">
-  <tr>
-    <td align="center" width="104">
-      <a href="https://interfaces.dev/?utm_source=tasteskill&utm_medium=sponsorship">
-        <img src="assets/sponsors/interfaces-dev-icon.webp" alt="Interfaces" width="52" height="52" />
-      </a>
-    </td>
-    <td><sub><a href="https://interfaces.dev/?utm_source=tasteskill&utm_medium=sponsorship"><strong>interfaces.dev</strong></a> · A design engineering magazine by <a href="https://github.com/jakubkrehel"><strong>Jakub Krehel</strong></a></sub></td>
-  </tr>
-  <tr>
-    <td align="center" width="104">
-      <a href="https://reactbits.dev">
-        <picture>
-          <source media="(prefers-color-scheme: dark)" srcset="assets/sponsors/reactbits-icon-dark.svg" />
-          <img src="assets/sponsors/reactbits-icon-light.svg" alt="React Bits" width="52" height="52" />
-        </picture>
-      </a>
-    </td>
-    <td><sub><a href="https://reactbits.dev"><strong>React Bits</strong></a> · animated React components for creative interfaces</sub></td>
-  </tr>
-  <tr>
-    <td align="center" width="104"><a href="https://img.ly/"><img src="assets/sponsors/imgly-logo.svg" alt="IMG.LY" width="52" height="52" /></a></td>
-    <td><sub><a href="https://img.ly/"><strong>IMG.LY</strong></a> · CreativeEditor SDK</sub></td>
-  </tr>
-  <tr>
-    <td align="center" width="104"><a href="https://www.sent.dm"><img src="assets/sponsors/sentdm.png" alt="Sent.dm" width="52" height="52" /></a></td>
-    <td><sub><a href="https://www.sent.dm"><strong>Sent.dm</strong></a> · messaging APIs for SMS, WhatsApp, and RCS</sub></td>
-  </tr>
-</table>
+# Strix
 
-<p align="center"><sub><a href="https://github.com/sponsors/Leonxlnx">Become a sponsor</a></sub></p>
+### The open-source AI pentesting tool. Autonomous AI hackers that find and fix your app’s vulnerabilities.
 
-**Taste Skill** is an Agent Skill that makes coding agents design websites and app screens instead of assembling the average landing page. It gives the agent an art direction, real pictures and a way to check its own work in a real browser.
+<br/>
 
-Pages it has built, each from one brief:
 
-<table>
-  <tr>
-    <td width="50%"><img src="examples/v2/coffee-storefront.webp" alt="Coffee shop page with a drawn storefront as its hero" /></td>
-    <td width="50%"><img src="examples/v2/night-dates.webp" alt="Techno night page with its dates set into an archive photograph" /></td>
-  </tr>
-  <tr>
-    <td width="50%"><img src="examples/v2/coffee-roast.webp" alt="Coffee shop page section showing the roast in four photographs" /></td>
-    <td width="50%"><img src="examples/v2/coffee-questions.webp" alt="Coffee shop page questions as stacked index cards" /></td>
-  </tr>
-</table>
+<a href="https://docs.strix.ai"><img src="https://img.shields.io/badge/Docs-docs.strix.ai-2b9246?style=for-the-badge&logo=gitbook&logoColor=white" alt="Docs"></a>
+<a href="https://strix.ai"><img src="https://img.shields.io/badge/Website-strix.ai-f0f0f0?style=for-the-badge&logoColor=000000" alt="Website"></a>
+[![](https://dcbadge.limes.pink/api/server/strix-ai)](https://discord.gg/strix-ai)
 
-The photographs are real, found in open archives and credited by the skill ([credits](examples/v2/CREDITS.md)). Watch the [launch film](https://github.com/Leonxlnx/taste-skill/releases/tag/v2.0.0).
+<a href="https://app.strix.ai?utm_source=github&utm_medium=readme&utm_content=badge_cloud"><img src="https://img.shields.io/badge/Strix%20Cloud-app.strix.ai-2b9246?style=for-the-badge&logoColor=white" alt="Strix Cloud"></a>
+<a href="https://strix.ai/demo?utm_source=github&utm_medium=readme&utm_content=badge_demo"><img src="https://img.shields.io/badge/Try%20Strix%20Enterprise-555555?style=for-the-badge&logoColor=white" alt="Try Strix Enterprise"></a>
 
-## Install
+<a href="https://github.com/usestrix/strix"><img src="https://img.shields.io/github/stars/usestrix/strix?style=flat-square" alt="GitHub Stars"></a>
+<a href="LICENSE"><img src="https://img.shields.io/badge/License-Apache%202.0-3b82f6?style=flat-square" alt="License"></a>
+<a href="https://pypi.org/project/strix-agent/"><img src="https://img.shields.io/pypi/v/strix-agent?style=flat-square" alt="PyPI Version"></a>
 
-```bash
-npx skills add https://github.com/Leonxlnx/taste-skill --skill "design-taste-frontend"
-```
 
-That installs the skill with the [`npx skills`](https://github.com/vercel-labs/agent-skills) CLI.
+<a href="https://discord.gg/strix-ai"><img src="https://github.com/usestrix/.github/raw/main/imgs/Discord.png" height="40" alt="Join Discord"></a>
+<a href="https://x.com/strix_ai"><img src="https://github.com/usestrix/.github/raw/main/imgs/X.png" height="40" alt="Follow on X"></a>
 
-The skill runs its scripts with **Node 22+** and an installed **Chrome, Edge or Chromium**. It installs nothing and needs no API keys. Finding pictures needs network access.
 
-<details>
-<summary>Claude Code plugin</summary>
+<a href="https://trendshift.io/repositories/15362?utm_source=trendshift-badge&amp;utm_medium=badge&amp;utm_campaign=badge-trendshift-15362" target="_blank" rel="noopener noreferrer"><img src="https://trendshift.io/api/badge/trendshift/repositories/15362/weekly" alt="usestrix%2Fstrix | Trendshift" width="250" height="55"/></a>
+<a href="https://trendshift.io/repositories/15362" target="_blank"><img src="https://trendshift.io/api/badge/repositories/15362" alt="usestrix/strix | Trendshift" width="250" height="55"/></a>
 
-Run these inside Claude Code. The skill is namespaced under `taste-skill:`, so it does not collide with your other skills.
+</div>
 
-```
-/plugin marketplace add Leonxlnx/taste-skill
-/plugin install taste-skill@taste-skill
-```
 
-`/plugin update` upgrades it later.
+> [!TIP]
+> **New!** Strix integrates seamlessly with GitHub Actions and CI/CD pipelines. Automatically scan for vulnerabilities on every pull request and block insecure code before it reaches production - [Get started with no setup required](https://app.strix.ai?utm_source=github&utm_medium=readme&utm_content=tip_ci).
 
-</details>
+---
 
-<details>
-<summary>Codex plugin</summary>
+
+## Strix Overview
+
+Strix are autonomous AI penetration testing agents that act just like real hackers - they run your code dynamically, find vulnerabilities, and validate them through actual proofs-of-concept. Built for developers and security teams who need fast, accurate security testing without the overhead of manual pentesting or the false positives of static analysis tools.
+
+**Key Capabilities:**
+
+- **Full pentesting toolkit** - reconnaissance, exploitation, and validation out of the box
+- **Multi-agent orchestration** - teams of AI pentesters that collaborate and scale
+- **Real exploit validation** - working PoCs, not false positives like legacy vulnerability scanners
+- **Developer‑first CLI** - actionable findings with remediation guidance
+- **Auto‑fix & reporting** - generate patches and compliance-ready pentest reports
+
+
+<br>
+
+
+<div align="center">
+  <a href="https://strix.ai">
+    <img src=".github/screenshot.png" alt="Strix Demo" width="1000" style="border-radius: 16px;">
+  </a>
+</div>
+
+
+## Use Cases
+
+- **Application Security Testing** - Detect and validate critical vulnerabilities in your applications
+- **Rapid Penetration Testing** - Get penetration tests done in hours, not weeks, with compliance reports
+- **Bug Bounty Automation** - Automate bug bounty research and generate PoCs for faster reporting
+- **CI/CD Integration** - Run tests in CI/CD to block vulnerabilities before reaching production
+
+## 🚀 Quick Start
+
+**Prerequisites:**
+- Docker (running)
+- An LLM API key from any [supported provider](https://docs.strix.ai/llm-providers/overview) (OpenAI, Anthropic, Google, etc.)
+
+### Installation & First Scan
 
 ```bash
-codex plugin marketplace add Leonxlnx/taste-skill
-codex plugin add taste-skill@taste-skill
+# Install Strix
+curl -sSL https://strix.ai/install | bash
+
+# Configure your AI provider
+export STRIX_LLM="openrouter/z-ai/glm-5.3"
+export LLM_API_KEY="your-api-key"
+
+# Run your first security assessment
+strix --target ./app-directory
 ```
 
-Start a new Codex session afterwards so the skill is loaded.
+> [!NOTE]
+> First run automatically pulls the sandbox Docker image. Results are saved to `strix_runs/<run-name>`
 
-</details>
-
-<details>
-<summary>From a clone, linked instead of copied</summary>
-
-`./install.sh` symlinks the skill into Claude Code (`--codex` for Codex, `--all-agents` for both), so a `git pull` updates it in place.
-
-</details>
-
-Already have the skill? Run the install command again; the install name did not change. Looking for one of the older skills? See [Moved skills](#moved-skills).
-
-## How v2 works
-
-The skill is built from a study of 247 curated sites. A build runs in six steps:
-
-1. Reads the brief and lists what only this client has.
-2. A script deals three of 20 researched directions and the agent picks one.
-3. Finds the idea: one sentence tying the client's own material to that direction.
-4. Builds with real pictures and footage from open collections, credited.
-5. Checks the page in a real browser at three widths and fails it on slop.
-6. Looks at its own screenshots and fixes the top three problems, up to three rounds.
-
-A build takes roughly 30 to 45 minutes and a few hundred thousand tokens. Details are in the [changelog](CHANGELOG.md) and the [study](skills/taste-skill/references/research.md).
-
-Dashboards and app screens (v2.1) take their own route: the skill deals one of the app styles distilled from real product screens, builds the shell, the data, the charts and the tables to those numbers, and checks the result with app rules: quiet panels, aligned figures, colour spent on data, a phone layout where the navigation folds away. A product's landing page builds the app it shows the same way, so its screenshots look like a working product.
-
-v2.1 also checks the frame of every page (a clear title on the first screen, equal margins, no section shoved to one side, no random blank stretches) and moves the way strong award sites do, measured on the latest 100 Awwwards Sites of the Day.
-
-## Moved skills
-
-This repo holds one skill, `design-taste-frontend`. The others moved to repos of their own and kept their install names:
-
-| Install name | Where it lives now |
-| --- | --- |
-| `high-end-visual-design`, `minimalist-ui`, `industrial-brutalist-ui`, `gpt-taste`, `stitch-design-taste`, `design-taste-frontend-v1`, `design-taste-frontend-v2-experimental` | **[Leonxlnx/taste-skill-classics](https://github.com/Leonxlnx/taste-skill-classics)** |
-| `imagegen-frontend-web`, `imagegen-frontend-mobile`, `brandkit`, `image-to-code` | **[Leonxlnx/imagegen-skills](https://github.com/Leonxlnx/imagegen-skills)** |
-| `redesign-existing-projects` | Part of `design-taste-frontend`, which audits an existing page in a real browser before changing anything |
-| `full-output-enforcement` | Removed. For the same problem, see **[Leonxlnx/unlazy](https://github.com/Leonxlnx/unlazy)** |
-
-Install a moved skill from its new repo under the same name:
+### Updating
 
 ```bash
-npx skills add https://github.com/Leonxlnx/taste-skill-classics --skill "high-end-visual-design"
+# Self-update the standalone binary to the latest release
+strix --update
+
+# ...or re-run the installer
+curl -sSL https://strix.ai/install | bash
 ```
 
-## Common Questions
+Installed with pipx, uv, or pip? `strix --update` prints the matching upgrade command instead (`pipx upgrade strix-agent`, `uv tool upgrade strix-agent`, `pip install --upgrade strix-agent`). Strix also shows a notice with the right command when a new version is available.
 
-**What does the skill need?**  
-Node 22 or newer and Chrome, Edge or Chromium. It installs nothing and uses no API keys. It needs the internet only to find pictures.
+---
 
-**Where do the pictures come from, and can I use them?**  
-From open collections such as Wikimedia Commons, Openverse and the Met. Only public domain, CC0, CC BY and CC BY-SA files are offered, and the skill puts the credits on the page. Replace them with your own when you have them.
+## Ways to Run Strix
 
-**Does it work with React, Vue, Svelte, plain HTML?**  
-Yes. The rules are about design, not a framework.
+- **Open Source** - free, runs locally with Docker and your own LLM key. [Quick Start](https://docs.strix.ai/quickstart)
+- **Strix Cloud** - no setup, validated findings, one-click autofix, and PR reviews. [Run a pentest →](https://app.strix.ai?intent=pentest&utm_source=github&utm_medium=readme&utm_content=table_cloud)
+- **Enterprise** - SSO, compliance-ready reports, VPC or self-hosted deployment. [Try Strix Enterprise →](https://strix.ai/demo?utm_source=github&utm_medium=readme&utm_content=table_demo)
 
-**Is it for dashboards and app screens?**  
-Yes, since v2.1. The skill tells a page from an app screen and builds a dashboard, an admin view or a settings screen with its own run: a style dealt from a study of real product screens, quiet panels, honest data and charts, and its own checks (`inspect.mjs --app`).
+---
 
-## Support the project
+## ☁️ Strix Cloud
 
-If Taste Skill helps you, consider sponsoring:
+Try the Strix full-stack penetration testing platform at **[app.strix.ai](https://app.strix.ai?utm_source=github&utm_medium=readme&utm_content=cloud_heading)** - sign up for free, connect your repos and domains, and launch a pentest in minutes.
 
-[Sponsor on GitHub](https://github.com/sponsors/Leonxlnx)
+- **Validated findings with PoCs** - every vulnerability includes a working proof-of-concept exploit and reproduction steps
+- **One-click autofix** - AI-generated security patches as ready-to-merge pull requests
+- **Continuous pentesting** - always-on vulnerability scanning that keeps pace with your deployments
+- **DevSecOps integrations** - GitHub, GitLab, Bitbucket, Slack, Jira, Linear, and CI/CD pipelines
+- **Continuous learning** - AI that builds on past findings, adapts to your codebase, and reduces false positives over time
 
-### Open Source Supporters
+[**Run a pentest →**](https://app.strix.ai?intent=pentest&utm_source=github&utm_medium=readme&utm_content=cloud_cta)
 
-<table align="center">
-  <tr>
-    <td align="center" width="104"><a href="https://www.kimi.com"><img src="assets/sponsors/kimi-icon.png" alt="Kimi" width="52" height="52" /></a></td>
-    <td><a href="https://www.kimi.com"><picture><source media="(prefers-color-scheme: dark)" srcset="https://kimi-file.moonshot.cn/prod-chat-kimi/kfs/4/1/2026-06-05/1d8h69mt3v89kkekg24gg" /><img alt="Kimi Open Source Friends" src="https://kimi-file.moonshot.cn/prod-chat-kimi/kfs/4/1/2026-06-05/1d8h69fudcmosb3pipls0" height="42" /></picture></a><br /><sub><a href="https://platform.kimi.ai?track_id=track-20f0d64bcaba419bb425a3e8c306f65d&aff=taste-skill"><strong>Get a Kimi API key</strong></a>: taste-skill users get 10% bonus API credits on their first purchase.</sub></td>
-  </tr>
-  <tr>
-    <td align="center" width="104"><a href="https://vercel.com/open-source-program"><img src="assets/sponsors/vercel-logo.svg" alt="Vercel" width="52" height="52" /></a></td>
-    <td><a href="https://vercel.com/open-source-program"><img src="assets/vercel-oss-program-badge.svg" alt="Vercel Open Source Program" height="28" /></a></td>
-  </tr>
-</table>
+## 🏢 Enterprise
 
-### Community Sponsors
+Get the same Strix experience with enterprise-grade controls: SSO (SAML/OIDC), custom compliance-ready penetration testing reports (SOC 2, ISO 27001, PCI DSS), dedicated support and SLA, custom deployment options (VPC or self-hosted), BYOK model support, and tailored AI pentesting agents optimized for your environment.
 
-<p>
-<a href="https://github.com/dnakov"><img src="https://github.com/dnakov.png" width="40" height="40" style="border-radius:50%" alt="dnakov" title="dnakov" /></a>
-<a href="https://github.com/AkramReshad"><img src="https://github.com/AkramReshad.png" width="40" height="40" style="border-radius:50%" alt="AkramReshad" title="AkramReshad" /></a>
-<a href="https://github.com/ajmalaksar25"><img src="https://github.com/ajmalaksar25.png" width="40" height="40" style="border-radius:50%" alt="ajmalaksar25" title="ajmalaksar25" /></a>
-<a href="https://github.com/krikkkk"><img src="https://github.com/krikkkk.png" width="40" height="40" style="border-radius:50%" alt="krikkkk" title="krikkkk" /></a>
-<a href="https://github.com/navanchauhan"><img src="https://github.com/navanchauhan.png" width="40" height="40" style="border-radius:50%" alt="navanchauhan" title="navanchauhan" /></a>
-<a href="https://github.com/robinebers"><img src="https://github.com/robinebers.png" width="40" height="40" style="border-radius:50%" alt="robinebers" title="robinebers" /></a>
-<a href="https://github.com/JKc66"><img src="https://github.com/JKc66.png" width="40" height="40" style="border-radius:50%" alt="JKc66" title="JKc66" /></a>
-<a href="https://github.com/u2393696078-rgb"><img src="https://github.com/u2393696078-rgb.png" width="40" height="40" style="border-radius:50%" alt="u2393696078-rgb" title="u2393696078-rgb" /></a>
-<a href="https://github.com/a-human-created-this"><img src="https://github.com/a-human-created-this.png" width="40" height="40" style="border-radius:50%" alt="a-human-created-this" title="a-human-created-this" /></a>
-<a href="https://github.com/AtharvaJaiswal005"><img src="https://github.com/AtharvaJaiswal005.png" width="40" height="40" style="border-radius:50%" alt="AtharvaJaiswal005" title="AtharvaJaiswal005" /></a>
-<a href="https://github.com/ghughes7"><img src="https://github.com/ghughes7.png" width="40" height="40" style="border-radius:50%" alt="ghughes7" title="ghughes7" /></a>
-<a href="https://github.com/mccun934"><img src="https://github.com/mccun934.png" width="40" height="40" style="border-radius:50%" alt="mccun934" title="mccun934" /></a>
-<a href="https://github.com/techmedic5"><img src="https://github.com/techmedic5.png" width="40" height="40" style="border-radius:50%" alt="techmedic5" title="techmedic5" /></a>
-<a href="https://github.com/bytewerk-dev"><img src="https://github.com/bytewerk-dev.png" width="40" height="40" style="border-radius:50%" alt="bytewerk-dev" title="bytewerk-dev" /></a>
-<a href="https://github.com/LuisGot"><img src="https://github.com/LuisGot.png" width="40" height="40" style="border-radius:50%" alt="LuisGot" title="LuisGot" /></a>
-<a href="https://github.com/oskar-collab"><img src="https://github.com/oskar-collab.png" width="40" height="40" style="border-radius:50%" alt="oskar-collab" title="oskar-collab" /></a>
-<a href="https://github.com/denvit"><img src="https://github.com/denvit.png" width="40" height="40" style="border-radius:50%" alt="denvit" title="denvit" /></a>
-<a href="https://github.com/onedollarstock"><img src="https://github.com/onedollarstock.png" width="40" height="40" style="border-radius:50%" alt="onedollarstock" title="onedollarstock" /></a>
-<a href="https://github.com/KANA-33"><img src="https://github.com/KANA-33.png" width="40" height="40" style="border-radius:50%" alt="KANA-33" title="KANA-33" /></a>
-<a href="https://github.com/emilkowalski"><img src="https://github.com/emilkowalski.png" width="40" height="40" style="border-radius:50%" alt="emilkowalski" title="emilkowalski" /></a>
-<a href="https://github.com/AnthonyLiuVa"><img src="https://github.com/AnthonyLiuVa.png" width="40" height="40" style="border-radius:50%" alt="AnthonyLiuVa" title="AnthonyLiuVa" /></a>
-<a href="https://github.com/Wolfy18"><img src="https://github.com/Wolfy18.png" width="40" height="40" style="border-radius:50%" alt="Wolfy18" title="Wolfy18" /></a>
-<a href="https://github.com/Gigslol"><img src="https://github.com/Gigslol.png" width="40" height="40" style="border-radius:50%" alt="Gigslol" title="Gigslol" /></a>
-</p>
+[**Try Strix Enterprise →**](https://strix.ai/demo?utm_source=github&utm_medium=readme&utm_content=enterprise_cta)
 
-<p align="center">
- <a href="https://www.star-history.com/leonxlnx/taste-skill">
-  <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/badge?repo=Leonxlnx/taste-skill&theme=dark" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/badge?repo=Leonxlnx/taste-skill" />
-   <img alt="Star History Rank" src="https://api.star-history.com/badge?repo=Leonxlnx/taste-skill" />
-  </picture>
- </a>
-</p>
+---
 
-<sub>Feedback: open an issue or pull request, DM [@lexnlin](https://x.com/lexnlin) or [@blueemi99](https://x.com/blueemi99), or email [hello@tasteskill.dev](mailto:hello@tasteskill.dev).</sub>
+## 🤖 Use Strix from Your Coding Agent
 
-<sub>Taste Skill has no official token, coin, or crypto project. Any token using my name, image, or project is unaffiliated and not endorsed by me.</sub>
+Strix is agent-ready. Give Claude Code, Cursor, Codex, or any [SKILL.md-compatible](https://agentskills.io) agent the ability to run pentests, fix findings, and set up CI scanning:
 
-## License
+```bash
+npx skills add usestrix/strix
+```
 
-[MIT License](LICENSE) · Copyright (c) 2026 Leonxlnx
+This installs nine skills for running pentests, fixing findings, and CI scanning, against code, web apps, APIs, and the OWASP Top 10. Agents can use the local CLI or the managed cloud with the same engine.
+
+See [`AGENTS.md`](AGENTS.md) for the quick reference, [docs.strix.ai/llms.txt](https://docs.strix.ai/llms.txt) for the CLI, and [docs.app.strix.ai](https://docs.app.strix.ai) for the API.
+
+---
+
+## ✨ Features
+
+### Agentic Pentesting Tools
+
+Strix agents come equipped with a comprehensive offensive security toolkit - the same tools used by professional penetration testers and ethical hackers:
+
+- **HTTP Interception Proxy** - Full request/response manipulation and analysis with Caido
+- **Browser Exploitation** - Automated browser for testing XSS, CSRF, clickjacking, and auth bypass flows
+- **Shell & Command Execution** - Interactive terminal for exploit development and post-exploitation
+- **Custom Exploit Runtime** - Python sandbox for writing and validating proof-of-concept exploits
+- **Reconnaissance & OSINT** - Automated attack surface mapping, subdomain enumeration, and fingerprinting
+- **Static & Dynamic Code Analysis** - SAST + DAST capabilities for comprehensive application security testing
+- **Vulnerability Knowledge Base** - Structured findings with CVSS scoring and OWASP classification
+
+### Comprehensive Vulnerability Scanner
+
+Strix identifies, validates, and exploits a wide range of security vulnerabilities across the OWASP Top 10 and beyond:
+
+- **Broken Access Control** - IDOR, privilege escalation, auth bypass
+- **Injection Attacks** - SQL injection, NoSQL injection, OS command injection, SSTI
+- **Server-Side Vulnerabilities** - SSRF, XXE, insecure deserialization, RCE
+- **Client-Side Attacks** - XSS (stored/reflected/DOM), prototype pollution, CSRF
+- **Business Logic Flaws** - Race conditions, payment manipulation, workflow bypass
+- **Authentication & Session** - JWT attacks, session fixation, credential stuffing vectors
+- **Infrastructure & Cloud** - Misconfigurations, exposed services, cloud security issues
+- **API Security** - Broken authentication, mass assignment, rate limiting bypass
+
+### Graph of Agents (Multi-Agent Pentesting)
+
+Advanced multi-agent orchestration for comprehensive automated penetration testing:
+
+- **Distributed Pentesting** - Specialized AI agents for recon, exploitation, and post-exploitation
+- **Scalable Security Testing** - Parallel execution across multiple targets for fast, comprehensive coverage
+- **Dynamic Coordination** - Agents share discoveries, chain vulnerabilities, and collaborate like a red team
+
+---
+
+## 🖥️ Local Web Viewer
+
+Every scan writes its results to disk as it runs. Bring them up in a local dashboard with a single command:
+
+```bash
+# Open the most recent run
+strix view
+
+# ...or open a specific run by name
+strix view my-run-name
+
+# Expose the viewer on all IPv4 interfaces at a fixed port
+strix view --host 0.0.0.0 --port 8080 --no-open
+```
+
+The dashboard shows the findings, a live map of the agent team, and past runs. Nothing leaves your machine, and the UI ships prebuilt. `strix view` binds to `127.0.0.1` and prints a tokened link that grants access to the run, so share it carefully.
+
+See the [viewer documentation](https://docs.strix.ai/usage/viewer) for the options and for reaching the viewer from another machine.
+
+---
+
+## Usage Examples
+
+### Basic Usage
+
+```bash
+# Scan a local codebase
+strix --target ./app-directory
+
+# Security review of a GitHub repository
+strix --target https://github.com/org/repo
+
+# Black-box web application assessment
+strix --target https://your-app.com
+```
+
+### API Testing (OpenAPI / Swagger / Postman)
+
+Point Strix at an API contract and it tests every declared endpoint instead of
+having to discover them by crawling. Pair the spec with the live base URL so the
+agent knows where to send traffic:
+
+```bash
+# OpenAPI / Swagger file, Postman export, or a live collection by id
+strix --target ./openapi.yaml --target https://api.your-app.com
+strix --target postman://<collection-uuid> --target https://api.your-app.com
+```
+
+
+### Advanced Testing Scenarios
+
+```bash
+# Grey-box authenticated testing
+strix --target https://your-app.com --instruction "Perform authenticated testing using credentials: user:pass"
+
+# Multi-target testing (source code + deployed app)
+strix -t https://github.com/org/app -t https://your-app.com
+
+# Targets from a file, one target per non-empty, non-comment line
+strix --target-list ./targets.txt
+```
+
+See the [CLI reference](https://docs.strix.ai/usage/cli) for every option, including scan modes, diff scope, instruction files, and budgets.
+
+### Headless Mode
+
+Run Strix programmatically without interactive UI using the `-n/--non-interactive` flag - perfect for servers and automated jobs. The CLI prints real-time vulnerability findings and the final report before exiting. Exits with non-zero code when vulnerabilities are found.
+
+```bash
+strix -n --target https://your-app.com
+```
+
+### CI/CD (GitHub Actions)
+
+Strix can be added to your pipeline to run a security test on pull requests with a lightweight GitHub Actions workflow:
+
+```yaml
+name: strix-penetration-test
+
+on:
+  pull_request:
+
+jobs:
+  security-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Install Strix
+        run: curl -sSL https://strix.ai/install | bash
+
+      - name: Run Strix
+        env:
+          STRIX_LLM: ${{ secrets.STRIX_LLM }}
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+
+        run: strix -n -t ./ --scan-mode quick
+```
+
+> [!TIP]
+> In CI pull request runs, Strix automatically scopes quick reviews to changed files, which is why the
+> checkout above fetches full history. See the
+> [CI/CD documentation](https://docs.strix.ai/integrations/github-actions) for the details.
+
+### Configuration
+
+```bash
+export STRIX_LLM="openrouter/z-ai/glm-5.3"
+export LLM_API_KEY="your-api-key"
+
+# Optional
+export LLM_API_BASE="your-api-base-url"  # if using a local model, e.g. Ollama, LMStudio
+```
+
+> [!NOTE]
+> Strix automatically saves your configuration to `~/.strix/cli-config.json`, so you don't have to re-enter it on every run.
+> See the [configuration reference](https://docs.strix.ai/advanced/configuration) for every environment variable.
+
+#### Sign in with a ChatGPT subscription
+
+Instead of a metered API key, you can run Strix on your ChatGPT Plus/Pro subscription:
+
+```bash
+strix auth login chatgpt             # sign in with your ChatGPT account
+export STRIX_LLM="chatgpt/gpt-5.4"   # chatgpt/<model> runs on the subscription
+strix auth status                    # show the active sign-in, or logout to forget it
+```
+
+#### Use the managed platform: `strix cloud`
+
+Run scans on [app.strix.ai](https://app.strix.ai) from the terminal, without Docker or an LLM key:
+
+```bash
+strix cloud login                                  # browser sign-in, one credential per install
+strix cloud scans start --source . --yes --wait    # scan local code, approving the upload
+strix cloud scans start --engagement-type live_test --domain-ids <uuid> --wait
+strix cloud vulns list --severity critical
+```
+
+Every [REST API](https://docs.app.strix.ai) operation has a matching `strix cloud <resource> <verb>` command. Run `strix cloud` to list the resources, and add `help` to a resource to list its verbs. Output is JSON when stdout is not a terminal or when you pass `--json`. Binary downloads are the exception: redirect the raw bytes, or combine `--output FILE --json` for download metadata.
+
+See the [cloud CLI documentation](https://docs.strix.ai/cloud/cli) for scopes, workspaces, billing, and source-upload options.
+
+#### Connect your own MCP servers
+
+Strix can connect to Model Context Protocol (MCP) servers you list and expose their tools to the agent during a run. Create `~/.strix/mcp-servers.json` with a JSON list of local `stdio` servers or remote `http` servers:
+
+```json
+[
+  {
+    "name": "github",
+    "transport": "http",
+    "url": "https://api.githubcopilot.com/mcp/",
+    "auth": { "kind": "bearer", "token": "your-token" },
+    "allowed_tools": ["list_issues"]
+  }
+]
+```
+
+Each server's tools are namespaced by `name`, for example `github_list_issues`. See the [MCP documentation](https://docs.strix.ai/integrations/mcp) for the full schema, tool filtering, and `stdio` servers.
+
+**Recommended models for best results:**
+
+- [Z.ai GLM-5.3 on OpenRouter](https://openrouter.ai/z-ai/glm-5.3) - `openrouter/z-ai/glm-5.3` (the default pick)
+- [OpenAI GPT-5.4](https://openai.com/api/) - `openai/gpt-5.4`
+- [Anthropic Claude Sonnet 4.6](https://claude.com/platform/api) - `anthropic/claude-sonnet-4-6`
+- [Google Gemini 3 Pro Preview](https://cloud.google.com/vertex-ai) - `vertex_ai/gemini-3-pro-preview`
+- [DeepSeek V4 Pro](https://platform.deepseek.com) - `deepseek/deepseek-v4-pro`
+- [Moonshot Kimi K3](https://platform.kimi.ai) - `moonshot/kimi-k3`
+
+See the [LLM Providers documentation](https://docs.strix.ai/llm-providers/overview) for all supported providers including Vertex AI, Bedrock, Azure, and local models.
+
+## Documentation
+
+Full documentation is available at **[docs.strix.ai](https://docs.strix.ai)** - including detailed guides for usage, CI/CD integrations, skills, and advanced configuration.
+
+## Contributing
+
+We welcome contributions of code, docs, and new skills - check out our [Contributing Guide](https://docs.strix.ai/contributing) to get started or open a [pull request](https://github.com/usestrix/strix/pulls)/[issue](https://github.com/usestrix/strix/issues).
+
+## Join Our Community
+
+Have questions? Found a bug? Want to contribute? **[Join our Discord!](https://discord.gg/strix-ai)**
+
+## Support the Project
+
+**Love Strix?** Give us a ⭐ on GitHub!
+
+## Acknowledgements
+
+Strix builds on the incredible work of open-source projects like [LiteLLM](https://github.com/BerriAI/litellm), [Caido](https://github.com/caido/caido), [Nuclei](https://github.com/projectdiscovery/nuclei), [Playwright](https://github.com/microsoft/playwright), and [Bubble Tea](https://github.com/charmbracelet/bubbletea). Huge thanks to their maintainers!
+
+
+> [!WARNING]
+> **Authorized use only.** Strix actively tests the targets you point it at, so only run it against systems you own or have **explicit, written permission** to test, and stay within the agreed scope. Unauthorized testing is illegal in most jurisdictions.
+> You alone are responsible for obtaining authorization and complying with the law. Strix is provided "as is" with no warranty or liability for misuse.
+
+</div>

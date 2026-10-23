@@ -1,111 +1,69 @@
-# Repository Guidelines
+# Strix — Agent Guide
 
-## Project Structure & Module Organization
+Strix is an open-source autonomous AI pentesting tool. This file is for AI coding agents that want to **use** Strix (run security scans) or **contribute** to it.
 
-`skill/` is the source of truth for the Impeccable skill: `SKILL.src.md`, `reference/`, `scripts/`, and `agents/`. `skill/scripts/` holds the launcher (`impeccable`, `impeccable.cmd`), the pinned engine `VERSION`, `command-metadata.json`, and the in-page live-mode JS. Every skill verb (`{{scripts_path}}/impeccable <verb>`) runs in the engine binary, built from this repo's Cargo workspace under `crates/`; the root `ENGINE_VERSION` pins the released binary used by installs. Read `docs/ENGINE.md` before changing runtime code. Build logic lives in `scripts/`, with provider configs in `scripts/lib/transformers/`. `cli/` is the npm shim that runs the same binary, the browser extension lives in `extension/`, and regression coverage lives in the Rust crates and `tests/`, including fixtures under `tests/fixtures/` and behavior goldens under `tests/oracle/`. The website and service live in the separate private `impeccable-site` repo. `dist/` and `build/` are generated and gitignored. The root harness folders (`.agents/`, `.claude/`, `.cursor/`, etc.) and `plugin/` are generated distribution artifacts that are tracked for direct repo installs, not hand-authored source.
+## Using Strix from an agent
 
-## Build, Test, and Development Commands
+Install the agent skills for step-by-step workflows:
 
-- `cargo build --release -p impeccable` - build this checkout's runtime into `target/release/impeccable`. This one binary is also the detector (`impeccable detect`); there is no separate detector binary. Point `IMPECCABLE_BIN` at it.
-- `cargo test --workspace` - run the Rust workspace tests.
-- `bun run test:rust-changed` - run the Rust tests of the crates your change touches (against the merge base with `origin/main`, working tree included) plus every crate that depends on them; `--print` shows the selection, `--base <ref>` changes the base. Full log in `target/test-rust-changed.log`, one summary line on stdout.
-- `bun run build` - source-first build: regenerate `dist/`, derived site assets, and validation output without syncing tracked harness folders.
-- `bun run build:release` - release/distribution build: run the full build and sync tracked root harness folders plus `plugin/`.
-- `bun run rebuild` - clean and rebuild everything from scratch without syncing tracked harness folders.
-- `bun run rebuild:release` - clean and rebuild everything, including tracked harness output sync.
-- `bun test tests/build.test.js` - run a focused Bun test.
-- `bun run fetch:engine` - download the pinned engine binary for this machine into `skill/scripts/bin/<os>-<arch>/` (or set `IMPECCABLE_BIN` to a local build). The oracle and framework suites skip without it.
-- `bun run test` - run the full Bun + Node test suite (includes the oracle replay against the engine binary and the plugin loader E2E, which installs the committed `plugin/` subtree into a sandboxed real Claude Code and skips cleanly when the `claude` CLI is absent).
-- `bun run test:live-e2e` - opt-in live-mode E2E against framework fixtures (~2 min; needs `npx playwright install chromium` once).
-- `bun run test:skill-behavior` - opt-in LLM-backed checks that the SKILL.md Setup flow actually drives the agent (runs claude-sonnet-5 / gpt-5.6-luna / gemini-3.5-flash / deepseek-v4-flash; needs `.env` with provider keys).
-- `bun run test:plugin-e2e` - just the plugin loader E2E, for fast iteration on `plugin/`, `skill/agents/`, or `scripts/build.js` changes.
-- `bun run build:extension` - rebuild the extension bundle (it runs `cargo xtask bundle`, which also refreshes the in-page detector bundle).
-
-Run `bun run build` after changing anything in `skill/`, transformer code, or user-facing counts. It validates the generated distribution under `dist/` without touching tracked root harness outputs. Use `bun run build:release` only when intentionally refreshing generated provider permutations for release/main-sync or build-system work.
-
-## Generated Provider Output Policy
-
-The root harness folders (`.agents/skills/`, `.claude/skills/`, `.cursor/skills/`, `.dsh/skills/`, `.gemini/skills/`, `.github/skills/`, `.grok/skills/`, `.hermes/skills/`, `.kiro/skills/`, `.opencode/skills/`, `.pi/skills/`, `.qoder/skills/`, `.rovodev/skills/`, `.trae*/skills/`, `.vibe/skills/`) and `plugin/` stay tracked so `main` remains installable for direct GitHub, `npx skills`, and submodule users. They are still generated artifacts.
-
-Normal development should be source-first: stage changes in `crates/`, `browser-bundle/`, `skill/`, `scripts/`, `cli/`, `extension/`, and `tests/`; leave generated harness churn unstaged unless the user asked for it. After source changes land on `main`, `.github/workflows/sync-generated-output.yml` runs `bun run build:release` and commits generated provider output directly back to `main`. Treat generated harness diffs as release artifacts and keep them out of feature PRs unless they are the point of the PR. The two tracked engine assets under `crates/live/assets/` follow the rule-change workflow below instead.
-
-## Sandbox gotchas for Codex agents
-
-Some repo workflows need to run outside the sandbox in the desktop app:
-
-- GitHub SSH operations that depend on the 1Password SSH agent, such as `gh pr checkout`, may fail in the sandbox with `sign_and_send_pubkey` or no 1Password approval prompt. Rerun them outside the sandbox instead of falling back to unrelated workarounds.
-- `bun run build:release` rewrites committed harness directories such as `.agents/skills/`. In the sandbox, Bun can hit filesystem errors while removing/recreating those trees (for example `EFAULT` on `.agents/skills`). Rerun the release build outside the sandbox before treating it as a real build failure.
-- The oracle and framework suites spawn the engine binary many times; run them with Node (`node --test tests/oracle.test.mjs`), which is what `bun run test` does.
-
-## Coding Style & Naming Conventions
-
-Use ESM, semicolons, and the existing two-space indentation style in JS, HTML, and CSS. Prefer small, single-purpose modules over large abstractions. Keep filenames descriptive and lowercase with hyphens where needed; skill entrypoints stay as `SKILL.md`, build and test helpers use `.js` or `.mjs`. In source frontmatter, use clear kebab-case names and concise descriptions. There is no dedicated formatter or linter configured here, so match surrounding code closely.
-
-For Rust, follow the surrounding crate's conventions and workspace formatting configuration. Keep changes scoped; do not reformat unrelated modules.
-
-## Testing Guidelines
-
-Tests use Bun's test runner plus Node's built-in `--test`. Name tests `*.test.js` or `*.test.mjs` and place new fixtures near the behavior they cover, usually under `tests/fixtures/`. Prefer targeted test runs while iterating, then finish with `bun run test`. If you change generated outputs or provider transforms, verify both source parsing and at least one affected provider path in `dist/`.
-
-For runtime changes under `crates/`, add a failing regression in the affected crate, run its focused tests (`cargo test -p <crate> <filter>`), then `bun run test:rust-changed`. The whole `cargo test --workspace` takes about 10 minutes on a 10-core laptop, almost all of it in the Chrome-driven `impeccable-browser` tests (about 5.5 min) and the `impeccable` CLI tests (about 2.3 min), against under 2 minutes to compile the workspace from cold; the script skips the crates a change cannot reach, and selects the whole workspace by itself when `Cargo.toml`, `Cargo.lock` or the toolchain moves. CI's `rust` jobs run the whole workspace on every PR that touches Rust. Run any cargo command that takes more than a minute as a background command and wait for its exit notification; do not poll with `sleep` loops or `pgrep -f` (it matches the polling shell's own command line and never exits). Rebuild with `cargo build --release -p impeccable` and run `IMPECCABLE_BIN="$PWD/target/release/impeccable" bun run test` so the oracle exercises the changed source, not an older downloaded release. Review intended oracle changes by hand; never overwrite goldens just to make a regression pass. `tests/oracle/vectors/calls/` contains frozen function-level vectors and must not be regenerated.
-
-For changes to the live-mode page JS (`skill/scripts/live-browser*.js`) or an `ENGINE_VERSION` bump, also run `bun run test:live-e2e` (kept out of the default suite because it does real `npm install` per fixture and boots framework dev servers). Scope to one fixture with `IMPECCABLE_E2E_ONLY=<fixture-name>` while iterating; pass `IMPECCABLE_E2E_DEBUG=1` for page-DOM and dev-server-log dumps on failure. Schema and authoring guide for new fixtures live in `tests/framework-fixtures/README.md`.
-
-Set `IMPECCABLE_E2E_AGENT=llm` to swap the deterministic fake agent for an API-backed one (`tests/live-e2e/agents/llm-agent.mjs`). Claude Haiku 4.5 is the primary path whenever `ANTHROPIC_API_KEY` is set. DeepSeek V4 Flash is the secondary cheap fallback when only `DEEPSEEK_API_KEY` is set, and can be forced with `IMPECCABLE_E2E_LLM_PROVIDER=deepseek` or `bun run test:live-e2e -- --llm-provider=deepseek`; override either model via `IMPECCABLE_E2E_LLM_MODEL` or `--llm-model=<model>`. Tests skip cleanly when the selected provider key is unset. This path hits the API — use it for verification, not CI.
-
-For changes to `skill/SKILL.src.md`'s Setup section or any Setup-touching reference file (`init.md`, `document.md`, `brand.md`, `product.md`, sub-command refs), also run `bun run test:skill-behavior`. The suite spawns current real models (claude-sonnet-5, gpt-5.6-luna, gemini-3.5-flash, deepseek-v4-flash) with the source SKILL.md inlined as system prompt and a workspace-scoped tool set, then asserts on the tool-call trace. Provider keys live in repo-root `.env`; missing keys skip cleanly. Scope to one provider with `IMPECCABLE_SKILL_BEHAVIOR_MODELS=<id>`; add `IMPECCABLE_SKILL_BEHAVIOR_VERBOSE=1` to dump per-scenario traces. Baseline and per-scenario assertions live in `tests/skill-behavior/README.md`.
-
-Other area-to-suite obligations (the canonical mapping is the `triggers` lists in `scripts/test-suites.mjs`; CLAUDE.md carries the full table): an `ENGINE_VERSION` bump owes `bun run test:new-work-e2e` (Playwright, offline), `bun run test:live-e2e-accept-cleanup` (provider-billed), and `bun run test:live-svelte-adapter-deepseek` (DeepSeek-billed) on top of the default run.
-
-## Anti-pattern detection rules
-
-The rule engine lives in this workspace. `crates/core` holds the checks and browser adapters; `crates/foundation` holds the registry and shared types. `crates/html`, `crates/browser`, and `crates/detect` provide the static HTML, URL, and CLI/text paths. `crates/wasm` compiles the shared rules for the extension, live overlay, and site. See `docs/ENGINE.md` for the crate map and bundle flow, and `docs/CLI-CONTRACT.md` for observable behavior.
-
-Add a fixture first under `tests/fixtures/antipatterns/` with should-flag and should-pass columns, at least four flag cases and five false-positive shapes, unique headings, and explicit pixel dimensions. Add failing Rust coverage before implementing the rule. Cover each affected engine path and add or update an oracle case (`node tests/oracle/record.mjs --bin <prefix>`, golden reviewed by hand). When a rule introduces design guidance, update `skill/SKILL.src.md` or `skill/reference/*.md` too.
-
-Run `cargo xtask bundle` after rule or browser-bundle changes and commit its two tracked outputs: `crates/live/assets/detect-antipatterns-browser.js` and `crates/live/assets/antipatterns.json`. The generated `extension/detector/` remains gitignored. Rebuild the native binary after bundling, run the Rust and Bun/Node checks above, and run `bun run build` to validate distribution and rule counts. Verify browser-facing changes on the relevant live fixture; native and browser adapters can disagree.
-
-## Commit & Pull Request Guidelines
-
-Recent history favors short, imperative subjects such as `Fix: ...`, `Add ...`, `Improve ...`, or `Bump ...`. Keep commits focused and explain the user-facing impact when it is not obvious. PRs should summarize what changed, list validation performed, and call out whether generated provider output was intentionally omitted or intentionally refreshed. Include screenshots for visible `site/` changes and mention affected providers when transform behavior changes.
-
-**Do not bump manifest versions or add changelog entries in a feature PR.** Bumping is a release step: a version in a feature branch conflicts with every other open branch, and a changelog entry describes a release that has not happened yet. Land the code; the maintainer bumps `package.json` / `.claude-plugin/plugin.json` / `extension/manifest.json` and writes `site/pages/changelog.astro` when cutting the release (see **Releases**). The only PR that touches a manifest version is one whose purpose is the release itself.
-
-## Reviewing a PR
-
-The in-page bundle, the oracle goldens and the call vectors are marked `-diff` in `.gitattributes`: one bundle line is the whole wasm module, and each golden's output is one escaped JSON string, so their raw diffs run to megabytes. Read the PR's files from a checkout instead of `git show <ref>:<path>` slices, and read the generated files on purpose:
-
-```sh
-gh pr diff <n> --name-only                                   # what changed
-gh pr diff <n> --exclude 'tests/oracle/golden/*' --exclude 'tests/oracle/vectors/*' --exclude 'crates/live/assets/detect-antipatterns-browser.js'
-git fetch origin pull/<n>/head && git worktree add --detach "${TMPDIR:-/tmp}/pr-<n>" FETCH_HEAD   # Read and grep the PR's files here
-git -C "${TMPDIR:-/tmp}/pr-<n>" merge-tree --write-tree --name-only origin/main HEAD   # tree id, then any files that conflict with main
-gh pr checks <n>
+```bash
+npx skills add usestrix/strix
 ```
 
-`gh pr diff` ignores `.gitattributes`, hence the `--exclude` flags. A `gh` too old for `--exclude` can skip that line and diff in the worktree instead: `git -C "${TMPDIR:-/tmp}/pr-<n>" diff origin/main...HEAD -- . ':!tests/oracle/golden' ':!tests/oracle/vectors' ':!crates/live/assets/detect-antipatterns-browser.js'`. The pathspec matters there too: a local `git diff` honours the attributes of the checked-out tree, so a branch cut before they landed still prints the raw diff. `git grep` reports these files as binary; use `rg` or `git grep -a`. To review a changed golden by hand, decode it on both sides:
+- `penetration-testing-with-strix` — run a headless pentest against code, URLs, domains, or IPs and read results (covers both run modes below)
+- `managed-pentesting-with-strix` — drive the managed app.strix.ai platform via REST (no local Docker/LLM needed)
+- `fix-security-vulnerabilities-with-strix` — remediate findings and re-run Strix to verify
+- `ci-security-scanning-with-strix` — add PR scanning to CI/CD (self-hosted CLI or managed app)
 
-```sh
-g='to_entries[]|"== \(.key)\n\(.value|if type=="string" then . else tojson end)"'; f=tests/oracle/golden/<case>.json
-diff <(git show origin/main:$f 2>/dev/null | jq -r "$g") <(git show HEAD:$f | jq -r "$g")   # in the PR worktree; a new case diffs against nothing
-```
+Target-specific workflows built on the same engine:
 
-Remove the worktree when done (`git worktree remove "${TMPDIR:-/tmp}/pr-<n>"`).
+- `application-security-testing` — whole-product AppSec review: pick the right test per asset, then rank the results
+- `web-app-penetration-testing` — black-box pentest of a live web app or staging site
+- `api-security-testing` — REST/GraphQL APIs and the OWASP API Security Top 10 (BOLA/IDOR, authz)
+- `owasp-top-10-testing` — systematic OWASP Top 10 assessment with honest per-category coverage
+- `find-security-vulnerabilities-in-code` — white-box review of a repo or working tree
 
-## Contributing, Issue, and PR Guidelines
+**Two ways to run, same engine — pick per situation:**
 
-This repo is issue-first for outside contributions. If you are not `pbakaus` or `abdulwahabone`, do not open a PR unless a maintainer has first discussed the change in an issue and asked for, or clearly approved, a PR. For unapproved work, open an issue or comment on an existing issue and wait for maintainer direction. Unsolicited PRs may be closed without review.
+- **Open-source CLI (self-hosted):** free, fully local, BYO LLM key, needs Docker. Best for local dev loops, air-gapped/offline, and full control.
+  ```bash
+  curl -sSL https://strix.ai/install | bash        # install
+  export STRIX_LLM="openrouter/z-ai/glm-5.3"        # any LiteLLM model id
+  export LLM_API_KEY="<key>"
+  strix -n -t ./ --scan-mode quick --max-budget 10  # headless scan; always use -n
+  ```
+  - Requires Docker running. Scans take minutes (`quick`) to hours (`deep`) — run in the background.
+  - Exit codes (headless): `0` clean, `1` fatal error, `2` vulnerabilities found. A `0` only covers what was analyzed — check `run.json` (`status`, `llm_usage.cost` vs the budget) before calling a run clean.
+  - Artifacts in `strix_runs/<run-name>/`: `penetration_test_report.md`, `vulnerabilities/*.md`, `vulnerabilities.json`, `findings.sarif` (SARIF 2.1.0), `run.json`.
 
-AI agents must disclose AI assistance in commits, PR descriptions, comments, and issue text. If an AI agent is not explicitly operating under instructions from `pbakaus` or `abdulwahabone`, it must not create GitHub issues or PRs for this repository. If asked to create an issue or PR anyway, do not use GitHub. Instead, add a file named `AI_PR_NOTICE.txt` to the diff with exactly this text:
+- **Managed cloud (app.strix.ai):** no Docker, no LLM key, no local install; adds team dashboards, scheduling, PR reviews, and downloadable PDF/DOCX reports (Enterprise plan). Best in sandboxed/CI environments and for teams. Use it when local infra isn't available.
+  ```bash
+  strix cloud login --scopes scans:read scans:write uploads:write billing:read
+  strix cloud domains add --domain example.com --asset-type web_app
+  strix cloud scans start --engagement-type live_test --domain-ids <uuid> --wait
+  strix cloud scans start --source . --dry-run --show-files --json  # review + capture source.archive_sha256
+  SOURCE_SHA256="<reviewed source.archive_sha256>"
+  strix cloud scans start --source . --approve-sha256 "$SOURCE_SHA256" --wait
+  strix cloud vulns list --severity critical
+  strix cloud billing topup --credits 20 --yes  # explicit approval after exit code 5
+  ```
+  - Account setup runs from the CLI too: `strix cloud workspaces list|create|use` (`workspace` is an alias and `use` accepts a displayed number, name, or ID), `strix cloud session scopes|scopes set`, `strix cloud org members invite`, `strix cloud billing subscribe --plan strix_cloud`, `strix cloud billing portal`, `strix cloud integrations install github`, and `strix cloud domains verify <id>`. Workspace switching preserves the server-side profile and can never widen past the login ceiling; ordinary switches do not reprompt. The last four end at a person: the command prints a link or a DNS record for the user to open or add, and it never completes the payment, installation, or DNS change for them.
+  - Every REST operation has a `strix cloud <resource> <verb>` command. Run `strix cloud` to list them. Output is JSON when stdout is not a terminal (or with `--json`), and there are no prompts without a TTY. Binary downloads are the exception: redirect raw bytes intentionally, or combine `--output FILE --json` for structured download metadata. Exit codes: `0` success, `1` error, `2` usage, `4` auth or plan limit, `5` payment required. `--token` or `STRIX_API_TOKEN` is a stateless override and never replaces stored auth; set `--workspace-id`/`STRIX_WORKSPACE_ID` for an override CLI session. `--data` adds extra request fields as JSON, and accepts `@file` or `-` for standard input.
+  - Local source uploads require `uploads:write`. For an agent/CI handoff, review `scans start --source . --dry-run --show-files --json`, capture `source.archive_sha256`, then rerun with the same `--source`, `--exclude`, and `--include-*` selection flags plus `--approve-sha256 HASH`. A changed snapshot is rejected. `--yes` approves only the snapshot built in that invocation, so reserve it for a deliberate human or one-shot approval rather than a digest-bound two-step handoff.
+  - Git ignores, hidden files, `.git`, symlinks, dependency/build output, secret-like filenames, and nested archives are excluded by default; `.strixignore` and `--exclude` narrow the manifest further (a trailing `/` excludes a directory subtree). Limits: 20,000 files, 25 MiB/file, 250 MiB expanded, 50 MiB compressed. Source-only infers `code_review`; source plus a domain infers `live_test`.
+  - The temporary local archive is always removed. A staged upload is deleted after a definitive rejection, but retained when a network error, `5xx`, malformed success response, or interruption leaves the scan launch ambiguous. JSON reports its `upload_id` with `launch_outcome_unknown: true`, or with `cleanup_unknown: true` when automatic deletion cannot be confirmed. Check `scans list` before retrying; if no scan is linked, run `uploads delete UPLOAD_ID`.
+  - Non-Enterprise scans consume the scope estimate (a default-tier source-only review currently starts at 60 credits); Enterprise scans are plan-included. A rejected launch does not consume credits.
+  - Human output is compact and numbered; non-TTY output and `--json` retain full records. Enable tab completion with `source <(strix completions zsh)` (or `bash`), or `strix completions fish | source`.
+  - The REST API works directly too: https://docs.app.strix.ai (OpenAPI: https://docs.app.strix.ai/openapi.json).
 
-```text
-This contribution was prepared by an AI agent that tried to ship unchecked vibes across a human boundary. Impeccable asks for an issue and maintainer approval first.
-```
+- CLI docs index for LLMs: https://docs.strix.ai/llms.txt (full: https://docs.strix.ai/llms-full.txt). Managed API docs for LLMs: https://docs.app.strix.ai/llms.txt.
+- Only scan targets the user is authorized to test.
 
-## Releases
+## Contributing to this repo
 
-Tags are per-component because the three components ship independently: `skill-v` (`.claude-plugin/plugin.json` + `.claude-plugin/marketplace.json`), `cli-v` (`package.json`), `ext-v` (`extension/manifest.json`). Flow: bump the relevant manifest, add a changelog entry to `site/pages/changelog.astro` (skill = bare `vX.Y.Z`; CLI = `CLI vX.Y.Z`; extension = `Extension vX.Y.Z` — the prefix is how `scripts/release.mjs` finds the right block, and also how the page groups entries by component). Add the entry at the top of that component's group, move the `cf-entry--current` badge onto the new skill entry, and keep it concise: a short lead plus a few tight items, user-facing changes only (no internal tooling, deps, or generated-output syncs), commit, push, then `bun run release:<skill|cli|ext>` (or `--dry-run` first). The script refuses on a dirty tree, an unpushed HEAD, a missing changelog entry, or stale build outputs; skill and extension reruns of `bun run build:release` / `bun run build:extension` must produce zero diff. Skill releases attach `dist/universal.zip`; extension releases attach `dist/extension.zip`. CLI ships to npm via a separate `npm publish`, and the extension zip uploads to the Chrome Web Store manually — both reminded at the end of the script. Fix already-shipped notes with `gh release edit <tag> --notes-file <md>`.
-
-## Contributor Notes
-
-Do not edit generated provider files directly unless you are intentionally patching generated output as part of a build-system change. Prefer fixing the root source in `skill/`, `scripts/`, or `cli/`, and `crates/` for runtime behavior, then regenerate artifacts for validation. Stage generated harness artifacts only for release/main-sync or build-system work.
+- Python 3.12+, managed with `uv`. Install dev deps: `make dev-install`.
+- Lint/format/type-check/security, all in one: `make check-all` (ruff, mypy, bandit).
+- Tests: `uv run pytest`.
+- Run from source: `uv run strix --target <target>`.
+- Layout: `strix/agents` (agent graph + prompts), `strix/tools` (proxy, browser, terminal, scanners), `strix/runtime` (Docker sandbox), `strix/report` (findings, SARIF), `strix/skills` (internal knowledge packs the pentest agents load — different from the consumer skills in `skills/`), `strix/interface` (CLI/TUI), `containers/` (sandbox image).
+- Pre-commit hooks: `make pre-commit` (or `uv run pre-commit install`).
